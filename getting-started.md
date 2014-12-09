@@ -1,3 +1,5 @@
+[目录](README.MD)
+
 开始
 =========
 
@@ -23,3 +25,7 @@ Github使用Elasticsearch检索近13亿行代码。
 这就是Elasticsearch出现的原因：Elasticsearch鼓励你去探索和利用你的数据，而不是因为太难检索而成为垃圾。
 
 Elasticsearch将成为你最好的朋友。
+
+上一节 
+
+下一节 [你知道的，为了搜索...](you-know-for-search.md)
