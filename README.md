@@ -17,7 +17,7 @@ ElasticSearch权威指南
 * 使用范例
 * 致谢
 
-[开始吧](getting-started.md))
+[开始](getting-started.md)
 ------------------------------
 * [你知道的，为了搜索...](you-know-for-search.md)
 * 集群的一生
