@@ -5,7 +5,7 @@ ElasticSearch权威指南
 *英文标题：Elasticsearch: The Definitive Guide*
 *英文原版地址：[http://www.elasticsearch.com/guide/en/elasticsearch/guide/current/index.html]()*
 
-序言
+[序言](getting-started.md)
 ---------
 * 谁应该读这本书
 * 为什么写此书
