@@ -1,31 +1,36 @@
-Elasticsearch is an open-source search engine built on top of Apache Lucene™, a full-text search-engine library. Lucene is arguably the most advanced, high-performance, and fully featured search engine library in existence today—both open source and proprietary.
+你知道的，为了搜索
+===================
 
-But Lucene is just a library. To leverage its power, you need to work in Java and to integrate Lucene directly with your application. Worse, you will likely require a degree in information retrieval to understand how it works. Lucene is very complex.
+Elasticsearch是一个构建于全文搜索引擎库Apache Lucene™之上的开源搜索引擎。Lucene开源和拥有专利的，我们甚至可以说，它是当下最先进、高效、功能齐全的搜索引擎库。
 
-Elasticsearch is also written in Java and uses Lucene internally for all of its indexing and searching, but it aims to make full-text search easy by hiding the complexities of Lucene behind a simple, coherent, RESTful API.
+但是，Lucene仅仅是一个库，要领略它的魅力，你需要使用Java，将它集成到到你的程序。更坏的是，你可能需要对它的检索机制有深入的了解。总之，它是很复杂的。
 
-However, Elasticsearch is much more than just Lucene and much more than “just” full-text search. It can also be described as follows:
+Elasticsearch使用java缩写，索引和检索完全基于Lucene，但其目标则是通过简单、通用、REST化的接口，隐藏Lucene的高深莫测，让全文搜索变得简(ren)单(xing)。
 
-A distributed real-time document store where every field is indexed and searchable
-A distributed search engine with real-time analytics
-Capable of scaling to hundreds of servers and petabytes of structured and unstructured data
-And it packages up all this functionality into a standalone server that your application can talk to via a simple RESTful API, using a web client from your favorite programming language, or even from the command line.
+但是，Elasticsearch不仅仅是Lucene，也不仅仅是全文搜索，它同时可以被描述成这样的：
 
-It is easy to get started with Elasticsearch. It ships with sensible defaults and hides complicated search theory away from beginners. It just works, right out of the box. With minimal understanding, you can soon become productive.
+* 分布式实时文档存储，所有字段可被索引和搜索。
+* 带有实时分析功能的分布式搜索引擎。
+* 极强伸缩性，轻松应对数以百计服务器，以及pb级别的数据（无论结构化或非结构化）
 
-Elasticsearch can be downloaded, used, and modified free of charge. It is available under the Apache 2 license, one of the most flexible open source licenses available.
+Elasticsearch把这些功能集中到单独的一台服务器，你的程序可以使用你最喜欢的语言、甚至命令行，通过简单的RESTfule接口和它进行交互。
 
-As your knowledge grows, you can leverage more of Elasticsearch’s advanced features. The entire engine is configurable and flexible. Pick and choose from the advanced features to tailor Elasticsearch to your problem domain.
+开始Elasticsearch是很简单的事情，它的默认配置已经足够智能化，确保新手们可以远离那些复杂的搜索理论。你只需要掌握很少的一部分知识，就可以马上将其投入到实践中去。
 
-The Mists of Time
+Elasticsearch基于[Apache 2 license](http://www.apache.org/licenses/LICENSE-2.0.html)（最灵活的开源许可之一），你可以免费地下载、使用和修改。
 
-Many years ago, a newly married unemployed developer called Shay Banon followed his wife to London, where she was studying to be a chef. While looking for gainful employment, he started playing with an early version of Lucene, with the intent of building his wife a recipe search engine.
+Elasticsearch是灵活可配置的，随着对Elasticsearch的不断了解，你可以掌握它更高级的功能，从里边挑选合适的解决掉你遇到问题的领域。
 
-Working directly with Lucene can be tricky, so Shay started work on an abstraction layer to make it easier for Java programmers to add search to their applications. He released this as his first open source project, called Compass.
+> 时间迷雾
+  ------------------------
 
-Later Shay took a job working in a high-performance, distributed environment with in-memory data grids. The need for a high-performance, real-time, distributed search engine was obvious, and he decided to rewrite the Compass libraries as a standalone server called Elasticsearch.
-
-The first public release came out in February 2010. Since then, Elasticsearch has become one of the most popular projects on GitHub with commits from over 300 contributors. A company has formed around Elasticsearch to provide commercial support and to develop new features, but Elasticsearch is, and forever will be, open source and available to all.
-
-Shay’s wife is still waiting for the recipe search…
+>  很多年以前，一个名叫Shay Banon的失业了的工程师，新婚不久，跟着他老婆到了伦敦，而他老婆则正在学习厨师。他一边寻找工作，一般开始使用早期版本的Lucene，想帮他老婆建一个菜谱的搜索引擎。
+  
+> 直接使用Lucene是很棘手的事情，所以Shay开始抽象出一个层，使得java程序能更加简单地使用搜索引擎，他把这个项目开源了，取名Compass。
+  
+> 后来，Shay找到了一份工作，主要是构建高性能、分布式内存数据网格，很明显，这需要一个高性能、实时、分布式的搜索引擎，于是乎，他决定重写Compass库，变成一个独立的服务器，取名Elasticsearch。
+  
+> 2010年2月，Elasticsearch的第1个版本发布。之后，它成为Github上最受欢迎的项目之一，拥有300多名贡献者。一家公司想让Elasticsearch提供商业授权开发新功能，但是Elasticsearch现在、而且永远都将开放给所有人使用。
+  
+> Shay的妻子还在等着他的菜谱搜索引擎...
 
