@@ -1,19 +1,25 @@
-getting started edit
+开始
+=========
 
-Elasticsearch is a real-time distributed search and analytics engine. It allows you to explore your data at a speed and at a scale never before possible. It is used for full-text search, structured search, analytics, and all three in combination:
 
-Wikipedia uses Elasticsearch to provide full-text search with highlighted search snippets, and search-as-you-type and did-you-mean suggestions.
-The Guardian uses Elasticsearch to combine visitor logs with social -network data to provide real-time feedback to its editors about the public’s response to new articles.
-Stack Overflow combines full-text search with geolocation queries and uses more-like-this to find related questions and answers.
-GitHub uses Elasticsearch to query 130 billion lines of code.
-But Elasticsearch is not just for mega-corporations. It has enabled many startups like Datadog and Klout to prototype ideas and to turn them into scalable solutions. Elasticsearch can run on your laptop, or scale out to hundreds of servers and petabytes of data.
+Elasticsearch是一个事实分布式搜索分析引擎。它集全文索引，结构化查询、分析于一体，展现了前所未有的速度和可扩展性。
 
-No individual part of Elasticsearch is new or revolutionary. Full-text search has been done before, as have analytics systems and distributed databases. The revolution is the combination of these individually useful parts into a single, coherent, real-time application. It has a low barrier to entry for the new user, but can keep pace with you as your skills and needs grow.
+鼎鼎有名的维基百科，就使用了Elasticsearch基于全文搜索的高亮、即时检索、搜索建议等功能。
 
-If you are picking up this book, it is because you have data, and there is no point in having data unless you plan to do something with it.
+Guardian则用Elasticsearch对它们用户的社会化数据进行分析，进而给编辑们提供公众对于新文章的实时反馈。
 
-Unfortunately, most databases are astonishingly inept at extracting actionable knowledge from your data. Sure, they can filter by timestamp or exact values, but can they perform full-text search, handle synonyms, and score documents by relevance? Can they generate analytics and aggregations from the same data? Most important, can they do this in real time without big batch-processing jobs?
+Stack Overflow整合了全文检索和地理位置查询，利用“大家更喜欢这些”去查找关联的问题和帖子。
 
-This is what sets Elasticsearch apart: Elasticsearch encourages you to explore and utilize your data, rather than letting it rot in a warehouse because it is too difficult to query.
+Github使用Elasticsearch检索近13亿行代码。
 
-Elasticsearch is your new best friend.
+不过，Elasticsearch不仅仅适用于大型企业，一些刚起步的公司（如Datadog、Klout）也使用它来制作原型、转化为可扩展性极强得解决方案。Elasticsearch可以在你的台式机上运行，也可以扩展到上百台服务器，运行上PB的数据。
+
+单独开看，全文索引、分析系统、分布式数据库这三种技术，很早就有了，相比之下，Elasticsearch既不新，也不具革命性，但它把这三者有机地结合起来，形成一个单独的、统一的、实时的程序，这才是它最具颠覆性的地方。它大大降低了用户学习的门槛，也能紧跟你的技巧和需求变化的节奏。
+
+如果你选择这本书是因为你有数据，但有数据毫无意义，除非你决定开始利用它。
+
+不幸的是，虽然大多数数据库能通过时间检索，能提取数据，但它们都不能提取有用的信息。像全文索引、同义词分析、评分，有几个会的？它们能对数据进行分析和聚合吗？更加重要的是，它们能毫不费力地实时处理这些吗？
+
+这就是Elasticsearch出现的原因：Elasticsearch鼓励你去探索和利用你的数据，而不是因为太难检索而成为垃圾。
+
+Elasticsearch将成为你最好的朋友。
