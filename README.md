@@ -21,8 +21,8 @@ ElasticSearch权威指南
 [开始](getting-started.md)
 ------------------------------
 * [你知道的，为了搜索...](you-know-for-search.md)
-* 集群的一生
-* 数据流入、流出
+* [集群的一生](distributed-cluster.md)
+* [数据流入、流出](data-in-data-out.md)
 * 分布式文档存储
 * 搜索-基本工具
 * 映射和分析
