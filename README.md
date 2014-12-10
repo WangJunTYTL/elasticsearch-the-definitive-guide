@@ -21,7 +21,7 @@ ElasticSearch权威指南
 [开始](getting-started/getting-started.md)
 ------------------------------
 * [你知道的，为了搜索...](getting-started/you-know-for-search.md)
-* [集群的一生](getting-started/distributed-cluster.md)
+* [集群体系](getting-started/distributed-cluster.md)
 * [数据流入、流出](getting-started/data-in-data-out.md)
 * 分布式文档存储
 * 搜索-基本工具
