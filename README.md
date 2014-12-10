@@ -4,7 +4,7 @@ ElasticSearch权威指南
 
 *英文标题：Elasticsearch: The Definitive Guide*
 
-*英文原版地址：[http://www.elasticsearch.com/guide/en/elasticsearch/guide/current/index.html]()*
+*英文原版地址：[http://www.elasticsearch.com/guide/en/elasticsearch/guide/current/index.html](http://www.elasticsearch.com/guide/en/elasticsearch/guide/current/index.html)*
 
 [序言](preface.md)
 ---------
