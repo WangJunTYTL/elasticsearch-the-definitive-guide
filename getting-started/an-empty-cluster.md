@@ -1,20 +1,20 @@
-an empty clusteredit
+一个空集群
+==============
 
-an empty cluster
-cluster health
-add an index
-add failover
-scale horizontally
-coping with failure
+如果启动一个单独节点，没有数据和索引，这时候集群就像图1“只有一个空节点的集群”
 
-If we start a single node, with no data and no indices, our cluster looks like Figure 1, “A cluster with one empty node”.
+![只一个空节点的集群](elas_0201.png)
 
-Figure 1. A cluster with one empty node
+图1. 只一个空节点的集群
 
-A cluster with one empty node
+一个节点运行一个Elasticsearch的实例，`cluster.name`相同的节点运行在同一个集群内，共享数据、共担负载。当节点从集群中移走的时候，集群将重组自己，均摊数据。
 
-A node is a running instance of Elasticsearch, while a cluster consists of one or more nodes with the same cluster.name that are working together to share their data and workload. As nodes are added to or removed from the cluster, the cluster reorganizes itself to spread the data evenly.
+集群中的一个节点被选举为主几点，负责管理集群内的变化，诸如创建或者删除索引、或者添加或删除节点。主节点可以不必参与文档级别的改动以及搜索，因此即使随着流量的增长，唯一的主节点并不会成为瓶颈点。任何节点都可以成为主节点，图1中的集群只有一个节点，因此它必然扮演主节点的角色了。
 
-One node in the cluster is elected to be the master node, which is in charge of managing cluster-wide changes like creating or deleting an index, or adding or removing a node from the cluster. The master node does not need to be involved in document-level changes or searches, which means that having just one master node will not become a bottleneck as traffic grows. Any node can become the master. Our example cluster has only one node, so it performs the master role.
+我们可以在使用过程中访问包含主节点的任何节点。每一个节点都知道每一个文档所在的节点，直接将请求转入真实存储文档的节点。无论访问哪个节点，都会负责收集一个或多个节点的数据且最终返回给用户。所有一切都被Elasticsearch处理好了，对用户而言是透明。
 
-As users, we can talk to any node in the cluster, including the master node. Every node knows where each document lives and can forward our request directly to the nodes that hold the data we are interested in. Whichever node we talk to manages the process of gathering the response from the node or nodes holding the data and returning the final response to the client. It is all managed transparently by Elasticsearch.
+
+
+---------------------------------------------------
+
+[集群健康](cluster-health.md)
