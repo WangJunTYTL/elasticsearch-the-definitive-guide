@@ -1,12 +1,13 @@
 映射
 =======
 
-exact values versus full text
-inverted index
-analysis and analyzers
-mapping
-complex core field types
-In order to be able to treat date fields as dates, numeric fields as numbers, and string fields as full-text or exact-value strings, Elasticsearch needs to know what type of data each field contains. This information is contained in the mapping.
+* [精确值和全文](exact-values-versus-full-text.md)
+* [倒排索引](inverted-index.md)
+* [分析和分析器](analysis-and-analyzers.md)
+* [映射](mapping.md)
+* [复杂核心类型](complex-core-field-types.md)
+
+为了能将将日期字段当作日期，将数字字段当成数字，将字符串字段作为全文或者精确值字符串，Elasticsearch需要知道每个字段都包含哪种类型的数据。这些信息被包含在映射中。
 
 在《[数据流入，数据流出](data-in-data-out.md)》解释过，每个索引里的文档都有一个类型，每个类型都有自己的映射，或者结构定义。映射定义了每个类型里德尔字段，每个字段的数据类型，以及Elasticsearch该如何处理每个字段。映射同样也用来配置每个类型关联的元数据。
 
