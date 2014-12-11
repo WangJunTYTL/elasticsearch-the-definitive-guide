@@ -5,7 +5,8 @@
 analysis and analyzers
 mapping
 complex core field types
-Data in Elasticsearch can be broadly divided into two types: exact values and full text.
+
+Elasticsearch里的数据可以广义地分为两种类型：精确值和全文。
 
 精确值就是和他们本身完全一样。比如一个日期或者一个用户ID，但是也包括精确字符串，比如一个用户名或者一个邮件地址。Foo和foo是不同的精确值。同样，2014和2014-09-15也不一样。
 
