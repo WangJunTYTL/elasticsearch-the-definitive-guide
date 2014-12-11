@@ -1,10 +1,11 @@
 精确值和全文
 =============================
 
-倒排索引
-analysis and analyzers
-mapping
-complex core field types
+* [精确值和全文](exact-values-versus-full-text.md)
+* [倒排索引](inverted-index.md)
+* [分析和分析器](analysis-and-analyzers.md)
+* [映射](mapping.md)
+* [复杂核心类型](complex-core-field-types.md)
 
 Elasticsearch里的数据可以广义地分为两种类型：精确值和全文。
 
