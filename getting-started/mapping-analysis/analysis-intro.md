@@ -1,7 +1,6 @@
+分析和分析器
+================
 
-elasticsearch: the definitive guide » getting started » mapping and analysis » analysis and analyzers
-«  inverted index     mapping  »
-analysis and analyzersedit
 
 exact values versus full text
 inverted index
@@ -9,6 +8,7 @@ analysis and analyzers
 mapping
 complex core field types
 Analysis is a process that consists of the following:
+
 
 First, tokenizing a block of text into individual terms suitable for use in an inverted index,
 Then normalizing these terms into a standard form to improve their “searchability,” or recall
@@ -124,4 +124,4 @@ You don’t always want this. Perhaps you want to apply a different analyzer tha
 
 To achieve this, we have to configure these fields manually by specifying the mapping.
 
-«  inverted index     mapping  »
+[« 倒排索引](inverted-index.md)     [映射  »](mapping.md)
