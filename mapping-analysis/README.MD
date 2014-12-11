@@ -1,20 +1,21 @@
-
-elasticsearch: the definitive guide » getting started » mapping and analysis
-«  search lite     exact values versus full text  »
-mapping and analysisedit
+映射和分析
+===========
 
 exact values versus full text
 inverted index
 analysis and analyzers
 mapping
 complex core field types
-While playing around with the data in our index, we notice something odd. Something seems to be broken: we have 12 tweets in our indices, and only one of them contains the date 2014-09-15, but have a look at the total hits for the following queries:
 
+在使用我们索引里的数据是，我们发现了一些奇怪的地方。在我们的索引里存了12条推文（tweet），其中有一条包含日期2014-09-15，但是一起来看一下下面这些查询命中的条数：
+
+```shell
 GET /_search?q=2014              # 12 results
 GET /_search?q=2014-09-15        # 12 results !
 GET /_search?q=date:2014-09-15   # 1  result
 GET /_search?q=date:2014         # 0  results !
-VIEW IN SENSE
+```
+
 Why does querying the _all field for the full date return all tweets, and querying the date field for just the year return no results? Why do our results differ when searching within the _all field or the date field?
 
 Presumably, it is because the way our data has been indexed in the _all field is different from how it has been indexed in the date field. So let’s take a look at how Elasticsearch has interpreted our document structure, by requesting the mapping (or schema definition) for the tweet type in the gb index:
