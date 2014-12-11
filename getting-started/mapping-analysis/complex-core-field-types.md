@@ -1,16 +1,17 @@
 
-elasticsearch: the definitive guide » getting started » mapping and analysis » complex core field types
-«  mapping     full-body search  »
-complex core field typesedit
+复杂核心字段类型
+================
 
-exact values versus full text
-inverted index
-analysis and analyzers
-mapping
-complex core field types
-Besides the simple scalar datatypes that we have mentioned, JSON also has null values, arrays, and objects, all of which are supported by Elasticsearch.
+* [精确值和全文](exact-values-versus-full-text.md)
+* [倒排索引](inverted-index.md)
+* [分析和分析器](analysis-and-analyzers.md)
+* [映射](mapping.md)
+* [复杂核心类型](complex-core-field-types.md)
 
-multivalue fieldsedit
+除了我们提到的简单标量数据类型，JSON还有`null`、`array`和`object`这几种类型，它们都被Elasticsearch所支持。
+
+多值字段
+--------
 
 It is quite possible that we want our tag field to contain more than one tag. Instead of a single string, we could index an array of tags:
 
