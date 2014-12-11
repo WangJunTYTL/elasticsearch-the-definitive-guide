@@ -2,13 +2,13 @@
 ================
 
 
-exact values versus full text
-inverted index
-analysis and analyzers
-mapping
-complex core field types
-Analysis is a process that consists of the following:
+* [精确值和全文](exact-values-versus-full-text.md)
+* [倒排索引](inverted-index.md)
+* [分析和分析器](analysis-and-analyzers.md)
+* [映射](mapping.md)
+* [复杂核心类型](complex-core-field-types.md)
 
+分析是包含以下内容的过程：
 
 First, tokenizing a block of text into individual terms suitable for use in an inverted index,
 Then normalizing these terms into a standard form to improve their “searchability,” or recall
