@@ -2,11 +2,11 @@
 倒排索引
 =======
 
-exact values versus full text
-inverted index
-analysis and analyzers
-mapping
-complex core field types
+* [精确值和全文](exact-values-versus-full-text.md)
+* [倒排索引](inverted-index.md)
+* [分析和分析器](analysis-and-analyzers.md)
+* [映射](mapping.md)
+* [复杂核心类型](complex-core-field-types.md)
 
 Elasticsearch使用倒排索引这种结构来提供快速全文搜索。一个倒排索引包含出现在任何文档的唯一词列表，对每一个词，也包含所有它出现的文档列表，
 
