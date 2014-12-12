@@ -1,8 +1,9 @@
-aggregation test-driveedit
+测试驱动聚合
+============
 
-adding a metric to the mix
-buckets inside buckets
-one final modification
+* [添加度量到混合](adding-a-metric-to-the-mix.md)
+* [嵌套的桶](buckets-inside-buckets.md)
+* [最终修改](one-final-modification.md)
 
 我们可以在接下来的几页定义各种聚合及其语法，但最好学习聚合的方法还是通过例子。聚合的语法相当简单，重要地还在于你学会如何看待聚合，并用合适的方法进行构建。
 
