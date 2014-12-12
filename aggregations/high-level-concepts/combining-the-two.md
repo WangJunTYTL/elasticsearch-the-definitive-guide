@@ -16,4 +16,4 @@
 
 这将给你每个<`国家`, `性别`, `年龄段`>组合的平均工资。所有这些通过一个请求一次性从数据取到了。
 
-[« 度量](metrics.md)     [测试驱动聚合 »](aggregation-test-drive.md) 
+[« 度量](metrics.md)     [测试驱动聚合 »](../aggregation-test-drive/README.MD) 
