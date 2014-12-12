@@ -2,9 +2,9 @@
 ========
 
 
-[桶](buckets.md)
-[度量](metrics.md)
-[两者结合](combining-the-two.md)
+* [桶](buckets.md)
+* [度量](metrics.md)
+* [两者结合](combining-the-two.md)
 
 像DSL，聚合有组合语法：独立的功能单元可以组合和相互匹配，满足你的个性化需求。这意味着只需要学习很少的概念，但是可以形成很多种组合。
 

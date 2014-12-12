@@ -1,9 +1,10 @@
 度量
 ======
 
-[桶](buckets.md)
-[度量](metrics.md)
-[两者结合](combining-the-two.md)
+
+* [桶](buckets.md)
+* [度量](metrics.md)
+* [两者结合](combining-the-two.md)
 
 桶将文件区分成有用的子集，但最终我们想要的通过度量计算每个桶中的文件。桶是达到目的的一个手段：它提供了一种方法来组织文档,使得你可以计算出有趣的指标。
 

@@ -1,9 +1,10 @@
 桶
 ======
 
-[桶](buckets.md)
-[度量](metrics.md)
-[两者结合](combining-the-two.md)
+
+* [桶](buckets.md)
+* [度量](metrics.md)
+* [两者结合](combining-the-two.md)
 
 一个桶是满足指定条件的简单的文档集合：
 
