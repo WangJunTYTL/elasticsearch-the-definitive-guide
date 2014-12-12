@@ -103,4 +103,4 @@ GET /cars/transactions/_search?search_type=count <1>
 
 --------------------
 
-[« 组合两者](combining-the-two.md)     [混合度量 »w](adding-a-metric-to-the-mix.md)
+[« 组合两者](combining-the-two.md)     [混合度量 »](adding-a-metric-to-the-mix.md)
