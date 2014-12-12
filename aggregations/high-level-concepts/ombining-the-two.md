@@ -1,19 +1,19 @@
+两者结合
+=========
 
-elasticsearch: the definitive guide » aggregations » high-level concepts » combining the two
-«  metrics     aggregation test-drive  »
-combining the twoedit
+[桶](buckets.md)
+[度量](metrics.md)
+[两者结合](combining-the-two.md)
 
-buckets
-metrics
-combining the two
-An aggregation is a combination of buckets and metrics. An aggregation may have a single bucket, or a single metric, or one of each. It may even have multiple buckets nested inside other buckets. For example, we can partition documents by which country they belong to (a bucket), and then calculate the average salary per country (a metric).
+聚合是桶和度量的结合。一个聚合可能有一个桶，或单一度量，或者各有一个，甚至可能有多个桶嵌套在其他桶里。例如，我们可以通过文档所属的国家将他们区分（桶），然后计算每个国家平均工资（度量）。
 
-Because buckets can be nested, we can derive a much more complex aggregation:
+因为桶能被嵌套，我们可以得到一个更为复杂的聚合：
 
-Partition documents by country (bucket).
-Then partition each country bucket by gender (bucket).
-Then partition each gender bucket by age ranges (bucket).
-Finally, calculate the average salary for each age range (metric)
-This will give you the average salary per <country, gender, age> combination. All in one request and with one pass over the data!
+1. 将文档通过`国家`区分（桶）。
+2. 然后对国家针对`性别`进行区分（桶）。
+3. 然后对每种性别通过`年龄段`区分（桶）。
+4. 最后，计算每个年龄段的平均工资（度量）。
 
-«  metrics     aggregation test-drive  »
+这将给你每个<`国家`, `性别`, `年龄段`>组合的平均工资。所有这些通过一个请求一次性从数据取到了。
+
+[« 度量](metrics.md)     [测试驱动聚合 »](aggregation-test-drive.md) 
