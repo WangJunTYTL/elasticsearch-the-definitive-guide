@@ -18,14 +18,14 @@ ElasticSearch权威指南
 * 使用范例
 * 致谢
 
-[开始](getting-started/README.md)
+[入门](getting-started/README.md)
 ------------------------------
-* [你知道的，为了搜索...](getting-started/you-know-for-search.md)
-* [集群体系](getting-started/distributed-cluster.md)
-* [数据流入、流出](getting-started/data-in-data-out.md)
+* [你知道的，为了搜索...](getting-started/you-know-for-search/README.MD)
+* [集群体系](getting-started/distributed-cluster/README.MD)
+* [数据](getting-started/data-in-data-out/README.MD)
 * 分布式文档存储
 * 搜索-基本工具
-* 映射和分析
+* [映射和分析](getting-started/mapping-analysis/README.MD)
 * 全体搜索
 * 排序和关联
 * 分布式搜索
@@ -52,10 +52,10 @@ ElasticSearch权威指南
 * 同义词
 * 错别字
 
-聚合
+[聚合](aggregations/README.MD)
 -------
-* 高级概念
-* 测试驱动聚合
+* [高级概念](aggregations/high-level-concepts/README.MD)
+* [测试驱动聚合](aggregations/aggregation-test-drive/README.MD)
 * 可用的容量和指标
 * 创建条形图
 * 关于时间
