@@ -1,18 +1,20 @@
-bucketsedit
+桶
+======
 
-buckets
-metrics
-combining the two
-A bucket is simply a collection of documents that meet a certain criteria:
+[桶](buckets.md)
+[度量](metrics.md)
+[组合两者](combining-the-two.md)
 
-An employee would land in either the male or female bucket.
-The city of Albany would land in the New York state bucket.
-The date 2014-10-28 would land within the October bucket.
-As aggregations are executed, the values inside each document are evaluated to determine whether they match a bucket’s criteria. If they match, the document is placed inside the bucket and the aggregation continues.
+一个桶是满足指定条件的简单的文档集合：
 
-Buckets can also be nested inside other buckets, giving you a hierarchy or conditional partitioning scheme. For example, Cincinnati would be placed inside the Ohio state bucket, and the entire Ohio bucket would be placed inside the USA country bucket.
+* 一个员工要么在“男性“的桶中，要么在”女性”的桶中。
+* `Albany`这个城市被分在`New York`这个桶中。
+* 日期`2014-10-28`会在`10月`这个桶中。
 
-Elasticsearch has a variety of buckets, which allow you to partition documents in many ways (by hour, by most-popular terms, by age ranges, by geographical location, and more). But fundamentally they all operate on the same principle: partitioning documents based on a criteria.
+当聚合执行的时候，文档中的值被评估是否匹配桶的标准。如果匹配，文档就会放到这个桶中，聚合将继续。
 
-«  high-level concepts     metrics  »
+指定一个等级或条件的分区方案，桶也可以嵌套在其他桶中。比如，Cincinnati将会被放到Ohio州得桶中，而Ohio整个桶会被放到USA国家这个桶里。但从根本上说，它们都是按同样的原理工作：基于统一标准对文件进行区分。
+
+-------------------------------
+[« 高级概念](high-level-concepts.md)     [度量 »](metrics.md)
 

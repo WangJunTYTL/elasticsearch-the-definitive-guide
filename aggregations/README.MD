@@ -1,36 +1,39 @@
 聚合
 ========
 
-Until this point, this book has been dedicated to search. With search, we have a query and we want to find a subset of documents that match the query. We are looking for the proverbial needle(s) in the haystack.
+[高级概念](high-level-concepts.md)
+[测试驱动的聚合](aggregation-test-drive.md)
+[可用的桶和度量](available-buckets-and-metrics.md)
+[创建矩形图](building-bar-charts.md)
+[看时间](looking-at-time.md)
+[范围聚合](scoping-aggregations.md)
+[过滤查询和聚合](filtering-queries-and-aggregations.md)
+[过滤多个桶](sorting-multivalue-buckets.md)
+[近似聚集](approximate-aggregations.md)
+[重要术语](significant-terms.md)
+[控制内存和延迟](controlling-memory-use-and-latency.md)
+[最后的想法](closing-thoughts.md)
 
-With aggregations, we zoom out to get an overview of our data. Instead of looking for individual documents, we want to analyze and summarize our complete set of data:
+直到现在，这本书一直致力于搜索。我们用搜索查询与之匹配的文档。我们正在大海捞针。
 
-How many needles are in the haystack?
-What is the average length of the needles?
-What is the median length of the needles, broken down by manufacturer?
-How many needles were added to the haystack each month?
-Aggregations can answer more subtle questions too:
+通过聚合，我们聚焦到数据的概况。不再针对单个的文档，我们要分析和总结数据的总况：
 
-What are your most popular needle manufacturers?
-Are there any unusual or anomalous clumps of needles?
-Aggregations allow us to ask sophisticated questions of our data. And yet, while the functionality is completely different from search, it leverages the same data-structures. This means aggregations execute quickly and are near real-time, just like search.
+* 大海里有多少根针
+* 针的平均长度是多少
+* 被制造商损坏的针，平均长度是多少
+* 海里每个月增加多少针
 
-This is extremely powerful for reporting and dashboards. Instead of performing rollups of your data (that crusty Hadoop job that takes a week to run), you can visualize your data in real time, allowing you to respond immediately.
+聚合可以解决更多微秒的问题：
+* 你最满意的制造商都有谁？
+* 是否有任何不寻常或者反常的针吗？
 
-Finally, aggregations operate alongside search requests. This means you can both search/filter documents and perform analytics at the same time, on the same data, in a single request. And because aggregations are calculated in the context of a user’s search, you’re not just displaying a count of four-star hotels—you’re displaying a count of four-star hotels that match their search criteria.
+聚合允许我们对数据问一些复杂的问题。虽然它和搜索完全不同，但它们使用相同的数据结构。这意味着聚合和搜索一样执行快速，近乎实时。
 
-Aggregations are so powerful that many companies have built large Elasticsearch clusters solely for analytics.
+这个非常适合报表和仪表盘。你可以很快将数据可视化，快速响应，而不需要对你的数据进行汇总（一个糟糕的Hadoop任务需要运行一周）。
 
-high-level concepts
-aggregation test-drive
-available buckets and metrics
-building bar charts
-looking at time
-scoping aggregations
-filtering queries and aggregations
-sorting multivalue buckets
-approximate aggregations
-significant terms
-controlling memory use and latency
-closing thoughts
-«  phonetic matching     high-level concepts  »
+最后，聚合操作也是通过搜索请求，这意味着你可以通过一个请求，对同一数据进行搜索/过滤和分析。因为聚合是在搜索的上下文进行计算，所以，不仅仅可以得到四星级酒店的数量，你可以获取到满足你搜索提交的四星级酒店数量。
+
+聚合如此重要，很多公司已经建立大型Elasticsearch集群用来分析。
+
+
+[« 语音匹配](../../phonetic-matching.md)      [高级概念 »](high-level concepts.md)

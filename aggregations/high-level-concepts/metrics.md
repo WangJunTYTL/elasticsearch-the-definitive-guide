@@ -1,13 +1,13 @@
+度量
+======
 
-elasticsearch: the definitive guide » aggregations » high-level concepts » metrics
-«  buckets     combining the two  »
-metricsedit
+[桶](buckets.md)
+[度量](metrics.md)
+[组合两者](combining-the-two.md)
 
-buckets
-metrics
-combining the two
-Buckets allow us to partition documents into useful subsets, but ultimately what we want is some kind of metric calculated on those documents in each bucket. Bucketing is the means to an end: it provides a way to group documents in a way that you can calculate interesting metrics.
+桶将文件区分成有用的子集，但最终我们想要的通过度量计算每个桶中的文件。桶是达到目的的一个手段：它提供了一种方法来组织文档,使得你可以计算出有趣的指标。
 
-Most metrics are simple mathematical operations (for example, min, mean, max, and sum) that are calculated using the document values. In practical terms, metrics allow you to calculate quantities such as the average salary, or the maximum sale price, or the 95th percentile for query latency.
+大部分度量都是简单的数学运算（比如`min`、`mean`、`max`和`sum`）计算文档的值。在实际应用中，度量允许你计算数量，如平均工资，或最大的销售价格，或第九十五百分位数的查询延迟(or the 95th percentile for query latency)。
 
-«  buckets     combining the two  »
+
+[« 捅](buckets.md)     [组合两者 »](combining-the-two.md)

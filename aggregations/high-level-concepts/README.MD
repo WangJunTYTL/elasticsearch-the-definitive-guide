@@ -1,34 +1,39 @@
+高级概念
+========
 
-elasticsearch: the definitive guide » aggregations » high-level concepts
-«  aggregations     buckets  »
-high-level conceptsedit
 
-buckets
-metrics
-combining the two
-Like the query DSL, aggregations have a composable syntax: independent units of functionality can be mixed and matched to provide the custom behavior that you need. This means that there are only a few basic concepts to learn, but nearly limitless combinations of those basic components.
+[桶](buckets.md)
+[度量](metrics.md)
+[组合两者](combining-the-two.md)
 
-To master aggregations, you need to understand only two main concepts:
+像DSL，聚合有组合语法：独立的功能单元可以组合和相互匹配，满足你的个性化需求。这意味着只需要学习很少的概念，但是可以形成很多种组合。
 
-Buckets
-Collections of documents that meet a criterion
-Metrics
-Statistics calculated on the documents in a bucket
-That’s it! Every aggregation is simply a combination of one or more buckets and zero or more metrics. To translate into rough SQL terms:
+要掌握聚合，你需要理解好下面两个概念：
 
+* 桶
+
+> 符合标准的文档集合。
+
+* 度量
+
+> 对桶中的文件计算的统计结果。
+
+
+每个聚合就是一个或多个桶以及0个或多个度量的组合。初略用SQL表示就是：
+
+```sql
 SELECT COUNT(color) 
 FROM table
 GROUP BY color 
+```
 
+`COUNT(color)`相当于一个`度量`。
 
-COUNT(color) is equivalent to a metric.
+`GROUP BY color`相当于一个`桶`。
 
+桶和SQL中的group概念很像，而度量则类似于`COUNT()`、`SUM()`、`MAX()`等等。
 
+让我们深入研究这两个概念，看看到底意味着什么。
 
-GROUP BY color is equivalent to a bucket.
-
-Buckets are conceptually similar to grouping in SQL, while metrics are similar to COUNT(), SUM(), MAX(), and so forth.
-
-Let’s dig into both of these concepts and see what they entail.
-
-«  aggregations     buckets  »
+--------------------------------
+[« 聚合](README.MD)     [桶 »](buckets.md) 
