@@ -1,0 +1,100 @@
+
+elasticsearch: the definitive guide » aggregations » aggregation test-drive » buckets inside buckets
+«  adding a metric to the mix     one final modification  »
+buckets inside bucketsedit
+
+adding a metric to the mix
+buckets inside buckets
+one final modification
+The true power of aggregations becomes apparent once you start playing with different nesting schemes. In the previous examples, we saw how you could nest a metric inside a bucket, which is already quite powerful.
+
+But the real exciting analytics come from nesting buckets inside other buckets. This time, we want to find out the distribution of car manufacturers for each color:
+
+GET /cars/transactions/_search?search_type=count
+{
+   "aggs": {
+      "colors": {
+         "terms": {
+            "field": "color"
+         },
+         "aggs": {
+            "avg_price": { 
+               "avg": {
+                  "field": "price"
+               }
+            },
+            "make": { 
+                "terms": {
+                    "field": "make" 
+                }
+            }
+         }
+      }
+   }
+}
+VIEW IN SENSE
+
+
+Notice that we can leave the previous avg_price metric in place.
+
+
+
+Another aggregation named make is added to the color bucket.
+
+
+
+This aggregation is a terms bucket and will generate unique buckets for each car make.
+
+A few interesting things happened here. First, you’ll notice that the previous avg_price metric is left entirely intact. Each level of an aggregation can have many metrics or buckets. The avg_price metric tells us the average price for each car color. This is independent of other buckets and metrics that are also being built.
+
+This is important for your application, since there are often many related, but entirely distinct, metrics that you need to collect. Aggregations allow you to collect all of them in a single pass over the data.
+
+The other important thing to note is that the aggregation we added, make, is a terms bucket (nested inside the colors terms bucket). This means we will generate a (color, make) tuple for every unique combination in your dataset.
+
+Let’s take a look at the response (truncated for brevity, since it is now growing quite long):
+
+{
+...
+   "aggregations": {
+      "colors": {
+         "buckets": [
+            {
+               "key": "red",
+               "doc_count": 4,
+               "make": { 
+                  "buckets": [
+                     {
+                        "key": "honda", 
+                        "doc_count": 3
+                     },
+                     {
+                        "key": "bmw",
+                        "doc_count": 1
+                     }
+                  ]
+               },
+               "avg_price": {
+                  "value": 32500 
+               }
+            },
+
+...
+}
+
+
+Our new aggregation is nested under each color bucket, as expected.
+
+
+
+We now see a breakdown of car makes for each color.
+
+
+
+Finally, you can see that our previous avg_price metric is still intact.
+
+The response tells us the following:
+
+There are four red cars.
+The average price of a red car is $32,500.
+Three of the red cars are made by Honda, and one is a BMW.
+«  adding a metric to the mix     one final modification  »
