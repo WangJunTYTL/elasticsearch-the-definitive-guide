@@ -1,10 +1,9 @@
 ElasticSearch权威指南
 ===================================
 
-
-*英文标题：Elasticsearch: The Definitive Guide*
-
-*英文原版地址：[http://www.elasticsearch.com/guide/en/elasticsearch/guide/current/index.html](http://www.elasticsearch.com/guide/en/elasticsearch/guide/current/index.html)*
+* 英文标题：Elasticsearch: The Definitive Guide
+* 英文github地址：[https://github.com/elasticsearch/elasticsearch-definitive-guide/](https://github.com/elasticsearch/elasticsearch-definitive-guide/)
+* 英文书地址：[http://www.elasticsearch.com/guide/en/elasticsearch/guide/current/index.html](http://www.elasticsearch.com/guide/en/elasticsearch/guide/current/index.html)
 
 [序言](preface.md)
 ---------
@@ -23,7 +22,7 @@ ElasticSearch权威指南
 * [你知道的，为了搜索...](getting-started/you-know-for-search/README.MD)
 * [集群体系](getting-started/distributed-cluster/README.MD)
 * [数据](getting-started/data-in-data-out/README.MD)
-* 分布式文档存储
+* [分布式文档存储](distributed-document-store/README.MD)
 * 搜索-基本工具
 * [映射和分析](getting-started/mapping-analysis/README.MD)
 * 全体搜索
