@@ -22,8 +22,8 @@ ElasticSearch权威指南
 * [你知道的，为了搜索...](getting-started/you-know-for-search/README.MD)
 * [集群体系](getting-started/distributed-cluster/README.MD)
 * [数据](getting-started/data-in-data-out/README.MD)
-* [分布式文档存储](distributed-document-store/README.MD)
-* 搜索-基本工具
+* [分布式文档存储](getting-started/distributed-document-store/README.MD)
+* [搜索-基本工具](getting-started/search/README.MD)
 * [映射和分析](getting-started/mapping-analysis/README.MD)
 * 全体搜索
 * 排序和关联
