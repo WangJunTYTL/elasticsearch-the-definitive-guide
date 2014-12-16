@@ -1,37 +1,54 @@
 
-elasticsearch: the definitive guide » getting started » searching—the basic tools » multi-index, multitype
-«  the empty search     pagination  »
-multi-index, multitypeedit
+多索引，多类型
+=============
 
-the empty search
-multi-index, multitype
-pagination
-search lite
-Did you notice that the results from the preceding empty search contained documents of different types--user and tweet--from two different indices--us and gb?
+* [空搜索](the-empty-search.md)
+* [多索引，多类型](multi-index-multitype.md)
+* [分页](pagination.md)
+* [搜索精简版](search-lite.md)
 
-By not limiting our search to a particular index or type, we have searched across all documents in the cluster. Elasticsearch forwarded the search request in parallel to a primary or replica of every shard in the cluster, gathered the results to select the overall top 10, and returned them to us.
+你有没有注意到《[空搜索](the-empty-search.md)》一节中的返回结果包含两种不同的文档——`user`和`tweet`，分别来自于不同的索引——`us`和`gb`。
 
-Usually, however, you will want to search within one or more specific indices, and probably one or more specific types. We can do this by specifying the index and type in the URL, as follows:
+因为搜索时不限制使用哪个索引或者类型，我们搜索了集群里边所有的文档。Elasticsearch将请求转发给集群里每一个分片（主分片或者复制分片），收集前10个结果，返回给我们。
 
-/_search
-Search all types in all indices
-/gb/_search
-Search all types in the gb index
-/gb,us/_search
-Search all types in the gb and us indices
-/g*,u*/_search
-Search all types in any indices beginning with g or beginning with u
-/gb/user/_search
-Search type user in the gb index
-/gb,us/user,tweet/_search
-Search types user and tweet in the gb and us indices
-/_all/user,tweet/_search
-Search types user and tweet in all indices
-When you search within a single index, Elasticsearch forwards the search request to a primary or replica of every shard in that index, and then gathers the results from each shard. Searching within multiple indices works in exactly the same way—there are just more shards involved.
+通常，你可能想对特定的索引和类型进行搜索。通过在URL里边指明索引和类型实现这样的需求，例如：
 
-Tip
-Searching one index that has five primary shards is exactly equivalent to searching five indices that have one primary shard each.
+* ```/_search```
 
-Later, you will see how this simple fact makes it easy to scale flexibly as your requirements change.
+> 搜索全部索引的全部类型
 
-«  the empty search     pagination  »
+* ```/gb/_search```
+   
+> 搜索索引｀gb`里的所有类型
+
+* ```/gb,us/_search```
+
+> 搜索`gb`和`us`两个索引里所有的类型
+
+* ```/g*,u*/_search```
+
+> 搜索所有以`g`和`u`开头的索引里的所有类型
+
+* ```/gb/user/_search```
+
+> 搜索索引`gb`的`user`类型
+
+* ```/gb,us/user,tweet/_search```
+
+> 搜索`gb`和`us`两个索引里边的`user`和`tweet`类型
+
+* ```/_all/user,tweet/_search```
+
+> 搜索所有索引里边`user`和`tweet`两种类型
+
+当你搜索一个索引时，Elasticsearch会将请求转发给这个索引里的每一个分片（主分片或者复制分片），从每一个分片收集结果。对多个搜索搜索和对单个搜索类似，只不过有更多的分片参与进来。
+
+> 提示
+-----
+搜索一个有5个主分片的索引，和搜索5个各有一个主分片的索引，是完全等同的。
+
+接下来，你将看到这个简单的因素，如何随着你的需求变化轻松实现灵活地扩展。
+
+------------------
+
+[« 空搜索](the-empty-search.md)      [分页 »](pagination.md)

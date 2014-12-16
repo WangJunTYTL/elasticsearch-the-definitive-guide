@@ -1,37 +1,42 @@
+分页
+======
 
-elasticsearch: the definitive guide » getting started » searching—the basic tools » pagination
-«  multi-index, multitype     search lite  »
-paginationedit
+* [空搜索](the-empty-search.md)
+* [多索引，多类型](multi-index-multitype.md)
+* [分页](pagination.md)
+* [搜索精简版](search-lite.md)
 
-the empty search
-multi-index, multitype
-pagination
-search lite
-Our preceding empty search told us that 14 documents in the cluster match our (empty) query. But there were only 10 documents in the hits array. How can we see the other documents?
+之前《[空搜索](the-empty-search.md)》一节告诉我们，急群众有14个文档匹配我们的查询（空查询）。但是在`hits`中只返回10个文档。我们怎么能看到另外的4个文档呢？
 
-In the same way as SQL uses the LIMIT keyword to return a single “page” of results, Elasticsearch accepts the from and size parameters:
+和SQL语句中使用`LIMIT`关键词返回一“页”的方式类似，Elasticsearch接收`from`和`size`两个参数：
 
-size
-Indicates the number of results that should be returned, defaults to 10
-from
-Indicates the number of initial results that should be skipped, defaults to 0
-If you wanted to show five results per page, then pages 1 to 3 could be requested as follows:
 
+`size`
+> 表明需要返回多少个结果，默认为10。
+
+`from`
+> 表明忽略前面的多少个结果。默认为0.
+
+如果你需要每页显示5条记录，那么第1至第3页的请求如下：
+
+```shell
 GET /_search?size=5
 GET /_search?size=5&from=5
 GET /_search?size=5&from=10
-VIEW IN SENSE
-Beware of paging too deep or requesting too many results at once. Results are sorted before being returned. But remember that a search request usually spans multiple shards. Each shard generates its own sorted results, which then need to be sorted centrally to ensure that the overall order is correct.
+```
+谨防深分页（页数很大）或者一次请求结果过多。结果在返回前会被排序。记住一个搜索结果通常由多个分片返回。每个分片产生自己的排序结果，然后会集中排序一下，以确保排序的结果是正确的。
 
-Deep Paging in Distributed Systems
+> 分布式系统的深分页
+----------------
+为了理解深分页带来的问题，假设我们搜索一个有5个分片的索引。当我们请求第1页的结果（第1到10个结果），每一个分片产生前10条记录并返回给请求节点，清秋节点对50各结果进行排序取前10个返回。
 
-To understand why deep paging is problematic, let’s imagine that we are searching within a single index with five primary shards. When we request the first page of results (results 1 to 10), each shard produces its own top 10 results and returns them to the requesting node, which then sorts all 50 results in order to select the overall top 10.
+> 现在假设我们请求第1000页，即第10001到10010条记录。工作原理和之前一样，而每个分片必须产生10010条记录。请求节点则需要对全部50050条记录进行排序，丢弃掉50040条记录！
 
-Now imagine that we ask for page 1,000—results 10,001 to 10,010. Everything works in the same way except that each shard has to produce its top 10,010 results. The requesting node then sorts through all 50,050 results and discards 50,040 of them!
+> 你可以看到，在一个分布式系统，随着页数增大，排序结果的成本呈指数级增长。这是一个任何网站搜索引擎不会返回超过1000条记录的最好理由。
 
-You can see that, in a distributed system, the cost of sorting results grows exponentially the deeper we page. There is a good reason that web search engines don’t return more than 1,000 results for any query.
+> 提示
+-------------
+在《[重新索引数据](reindexing-your-data.md)》一章中我们将解释如何高效地检索大量文档。
 
-Tip
-In Reindexing Your Data we explain how you can retrieve large numbers of documents efficiently.
-
-«  multi-index, multitype     search lite  »
+-------------------------
+[« 多索引，多类型](multi-index-multitype.md)     [搜索精简版 »](search-lite.md)

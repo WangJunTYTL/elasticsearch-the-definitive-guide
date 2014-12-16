@@ -1,78 +1,98 @@
- 
-elasticsearch: the definitive guide » getting started » searching—the basic tools » search lite
-«  pagination     mapping and analysis  »
-search liteedit
+搜索精简版
+=========
 
-the empty search
-multi-index, multitype
-pagination
-search lite
-There are two forms of the search API: a “lite” query-string version that expects all its parameters to be passed in the query string, and the full request body version that expects a JSON request body and uses a rich search language called the query DSL.
+* [空搜索](the-empty-search.md)
+* [多索引，多类型](multi-index-multitype.md)
+* [分页](pagination.md)
+* [搜索精简版](search-lite.md)
 
-The query-string search is useful for running ad hoc queries from the command line. For instance, this query finds all documents of type tweet that contain the word elasticsearch in the tweet field:
+有两种形式的搜索API：精简的查询字符串版——所有的参数都通过查询字符串表达；完整请求体版本——通过JSON格式的请求体查询，这种查询体被称为DSL，有着丰富的搜索语言。
 
+
+在命令行中运行字符串搜索是很管用的。比如，查找`tweet`类型中`tweet`字段包含`elastaticsearch`的文档：
+
+```shell
 GET /_all/tweet/_search?q=tweet:elasticsearch
-VIEW IN SENSE
-The next query looks for john in the name field and mary in the tweet field. The actual query is just
+```
+下一个查询查找`name`字段为`john`，`tweet`字段为`mary`的文档，真正的查询字符串为：
 
-+name:john +tweet:mary
-but the percent encoding needed for query-string parameters makes it appear more cryptic than it really is:
+`+name:john +tweet:mary`
 
+但是，查询字符串参数需要被%编码，因而显得比真正的更神秘：
+
+```shell
 GET /_search?q=%2Bname%3Ajohn+%2Btweet%3Amary
-VIEW IN SENSE
-The + prefix indicates conditions that must be satisfied for our query to match. Similarly a - prefix would indicate conditions that must not match. All conditions without a + or - are optional—the more that match, the more relevant the document.
+```
 
-the _all fieldedit
+“+”作为前缀表示这个条件必须满足。而“-”作为前缀则表示这个条件必须不被匹配。如果条件中没有“+”或者“-”则表明条件是可选的——越和条件匹配，则该文档的关联性越大。
 
-This simple search returns all documents that contain the word mary:
 
+`_all`字段
+----------
+这个简单的查询返回所有包含`mary`的文档：
+
+```shell
 GET /_search?q=mary
-VIEW IN SENSE
-In the previous examples, we searched for words in the tweet or name fields. However, the results from this query mention mary in three fields:
+```
 
-A user whose name is Mary
-Six tweets by Mary
-One tweet directed at @mary
-How has Elasticsearch managed to find results in three different fields?
+在上一个例子中，我们查询了`tweet`和`name`字段的词，然而，查询结果提到的`mary`在三个不同的字段：
 
-When you index a document, Elasticsearch takes the string values of all of its fields and concatenates them into one big string, which it indexes as the special _all field. For example, when we index this document:
+* 一个全名为Mary的用户
+* Mary发表的6条推文
+* 一条@mary的推文
 
+Elasticsearch·是如何通过3个不同的字段查找结果的呢？
+
+当你索引一个文档，Elasticsearch将所有的字符串字段连接起来形成一个大的字符串，并将它放到`_all`字段索引起来。比如，当我们搜索这个文档：
+
+```json
 {
     "tweet":    "However did I manage before Elasticsearch?",
     "date":     "2014-09-14",
     "name":     "Mary Jones",
     "user_id":  1
 }
-it’s as if we had added an extra field called _all with this value:
+```
+这相当于我们添加了一个额外的`_all`字段，它的值如下：
 
-"However did I manage before Elasticsearch? 2014-09-14 Mary Jones 1"
-The query-string search uses the _all field unless another field name has been specified.
+> "However did I manage before Elasticsearch? 2014-09-14 Mary Jones 1"
 
-Tip
-The _all field is a useful feature while you are getting started with a new application. Later, you will find that you have more control over your search results if you query specific fields instead of the _all field. When the _all field is no longer useful to you, you can disable it, as explained in Metadata: _all Field.
+这个查询字符串使用`_all`字段，除非被指定了别的名字。
 
-more complicated queriesedit
+> 提示
+-------
+当你开始使用一个新应用的时候，`_all`字段是很有用的功能。之后，当你能对搜索结果有更多控制时，你会更多地查询指定的字段。当`_all`字段对你无用的时候，你可以禁掉它，参见《[元数据：`_all`字段](metadata-_all-field.md)》。
 
-The next query searches for tweets, using the following criteria:
+更复杂的查询
+-------------
 
-The name field contains mary or john
-The date is greater than 2014-09-10
-The _all field contains either of the words aggregations or geo
-+name:(mary john) +date:>2014-09-10 +(aggregations geo)
-VIEW IN SENSE
-As a properly encoded query string, this looks like the slightly less readable result:
+接下来使用如下的条件查询推文：
 
-?q=%2Bname%3A(mary+john)+%2Bdate%3A%3E2014-09-10+%2B(aggregations+geo)
-As you can see from the preceding examples, this lite query-string search is surprisingly powerful. Its query syntax, which is explained in detail in the Query String Syntax reference docs, allows us to express quite complex queries succinctly. This makes it great for throwaway queries from the command line or during development.
+* `name`字段包含`mary`或者`john`
+* `date`字段大于`2014-09-19`
+* `_all`字段包含`aggregations`或者`geo`
 
-However, you can also see that its terseness can make it cryptic and difficult to debug. And it’s fragile—a slight syntax error in the query string, such as a misplaced -, :, /, or ", and it will return an error instead of results.
 
-Finally, the query-string search allows any user to run potentially slow, heavy queries on any field in your index, possibly exposing private information or even bringing your cluster to its knees!
 
-Tip
-For these reasons, we don’t recommend exposing query-string searches directly to your users, unless they are power users who can be trusted with your data and with your cluster.
+`+name:(mary john) +date:>2014-09-10 +(aggregations geo)`
 
-Instead, in production we usually rely on the full-featured request body search API, which does all of this, plus a lot more. Before we get there, though, we first need to take a look at how our data is indexed in Elasticsearch.
+经过正确编码的查询字符串，看起来可读性要差一点：
 
-«  pagination     mapping and analysis  »
+`?q=%2Bname%3A(mary+john)+%2Bdate%3A%3E2014-09-10+%2B(aggregations+geo)`
+
+通过前面的例子你可以发现，精简版的查询字符串搜索出奇的精彩。它的查询语法，允许我们间接地表达非常复杂的查询。我们在《查询字符串语法》一节中对其给予了详细地介绍。这使它非常适合在命令行或者开发阶段使用。
+
+然而，你也可以看到，它的简介让它很神秘且很难调试。而且它很脆弱，一个简单的语法问题（比如将`-`、`:`、`/`或者`"`放错位置），就会导致错误，而不会返回结果。
+
+最后，查询字符串允许任何用户对索引中的任何字段运行缓慢、重量级的查询，容易暴露私人信息，甚至使集群瘫痪。
+
+> 提示
+------
+基于这些原因，我们不推荐直接将字符串查询交给你的用户，除非他们肯定能管理好数据和集群。
+
+相反，在生产环境，我们通常更加依赖全功能的请求体搜索API。它们能处理更多的事情。在没有了解之前，我们需要先了解Elasticsearch是如何索引我们的数据。
+
+
+--------------
+[« 分页](pagination.md)      [映射和分析 »](../mapping-and-analysis/README.MD)
 
