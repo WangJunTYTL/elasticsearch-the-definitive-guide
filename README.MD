@@ -25,7 +25,7 @@ ElasticSearch权威指南
 * [分布式文档存储](getting-started/distributed-document-store/README.MD)
 * [搜索-基本工具](getting-started/search/README.MD)
 * [映射和分析](getting-started/mapping-analysis/README.MD)
-* [请求体搜索](getting-started/full-body-request/README.MD)
+* [请求体搜索](getting-started/full-body-search/README.MD)
 * 排序和关联
 * 分布式搜索
 * 索引管理
