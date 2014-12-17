@@ -1,16 +1,20 @@
 
-elasticsearch: the definitive guide » getting started » full-body search
-«  complex core field types     empty search  »
-full-body searchedit
+请求体搜索
+==========
 
-empty search
-query dsl
-queries and filters
-most important queries and filters
-combining queries with filters
-validating queries
-Search lite-- a query-string search-- is useful for ad hoc queries from the command line. To harness the full power of search, however, you should use the request body search API, so called because most parameters are passed in the HTTP request body instead of in the query string.
 
-Request body search—henceforth known as search--not only handles the query itself, but also allows you to return highlighted snippets from your results, aggregate analytics across all results or subsets of results, and return did-you-mean suggestions, which will help guide your users to the best results quickly.
+* [空搜索](empty-search.md)
+* [查询DSL](query-dsl.md)
+* [查询和过滤器](queries-and-filters.md)
+* [更重要的查询和过滤器](most-important-queries-and-filters.md)
+* [带过滤器的查询](combining-queries-with-filters.md)
+* [验证查询](validating-queries.md)
 
-«  complex core field types     empty search  »
+搜索精简版（字符串搜索）很适合在命令行临时使用。不过要充分发挥搜索的作用，你应该使用`请求体搜索API`(这个叫法是因为大部分参数都是通过HTTP请求体而不是查询字符串)。
+
+要求搜身从此被称为搜索——不仅处理查询本身，也可以让你突出的片段从你的结果返回料分析，在所有的结果或子集的结果，并返回你的意思是建议，这将帮助你的用户很快达到最佳效果。
+
+自此之后，请求体搜索被称为搜索。不仅因为它处理搜索本身，还因为它允许对结果进行高亮显示，对结果或者子集进行聚合分析，并返回“你是这个意思吗？”的建议，帮助用户尽快找到最好的结果。
+
+---------------------
+[« 复杂和新字段类型](complex-core-field-types.md)     [空搜索 »](empty-search.md)

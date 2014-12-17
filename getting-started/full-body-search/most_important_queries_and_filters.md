@@ -1,35 +1,46 @@
+更重要的查询和过滤器
+=================
 
-elasticsearch: the definitive guide » getting started » full-body search » most important queries and filters
-«  queries and filters     combining queries with filters  »
-most important queries and filtersedit
+* [空搜索](empty-search.md)
+* [查询DSL](query-dsl.md)
+* [查询和过滤器](queries-and-filters.md)
+* [更重要的查询和过滤器](most-important-queries-and-filters.md)
+* [带过滤器的查询](combining-queries-with-filters.md)
+* [验证查询](validating-queries.md)
 
-empty search
-query dsl
-queries and filters
-most important queries and filters
-combining queries with filters
-validating queries
-While Elasticsearch comes with many queries and filters, you will use just a few frequently. We discuss them in much greater detail in Search in Depth but next we give you a quick introduction to the most important queries and filters.
+而elasticsearch带来许多的查询和过滤器，你将只使用一些经常。我们讨论的更为详细的搜索深度但接下来我们给你一个快速的介绍最重要的查询和过滤器。
 
-term filteredit
+Elasticsearch有很多查询和过滤器，你经常使用的只是一小部分。我们将在《[深度搜索](../../search-in-depth/README.MD)》中详细讨论更多的细节，现在我们来快速了解一些更加重要的查询和过滤器。
 
-The term filter is used to filter by exact values, be they numbers, dates, Booleans, or not_analyzed exact-value string fields:
+术语过滤
+---------
 
+术语过滤器被用来对精确值进行过滤，包括数值、日期、布尔值、或者`not_analyzed`的字符串：
+
+
+```json
 { "term": { "age":    26           }}
 { "term": { "date":   "2014-09-01" }}
 { "term": { "public": true         }}
 { "term": { "tag":    "full_text"  }}
-VIEW IN SENSE
-terms filteredit
+```
 
-The terms filter is the same as the term filter, but allows you to specify multiple values to match. If the field contains any of the specified values, the document matches:
+多术语过滤器
+--------------
 
+多术语过滤器和术语过滤器相同，但是允许指定更多的值进行匹配。只要字段包含任何指定的值，都会被匹配上：
+
+```json
 { "terms": { "tag": [ "search", "full_text", "nosql" ] }}
-VIEW IN SENSE
-range filteredit
+```
 
-The range filter allows you to find numbers or dates that fall into a specified range:
+范围过滤
+-------
 
+范围过滤器允许你找到在指定范围内的数字或日期：
+
+
+```json
 {
     "range": {
         "age": {
@@ -38,27 +49,37 @@ The range filter allows you to find numbers or dates that fall into a specified 
         }
     }
 }
-VIEW IN SENSE
-The operators that it accepts are as follows:
+```
 
-gt
-Greater than
-gte
-Greater than or equal to
-lt
-Less than
-lte
-Less than or equal to
-exists and missing filtersedit
+操作符接受如下几种：
 
-The exists and missing filters are used to find documents in which the specified field either has one or more values (exists) or doesn’t have any values (missing). It is similar in nature to IS_NULL (missing) and NOT IS_NULL (exists)in SQL:
+`gt`
+> 大于
 
+`gte`
+> 大于等于
+
+`lt`
+> 小于
+
+`lte`
+> 小于等于
+
+
+存在和丢失过滤器
+-------------
+
+存在和丢失过滤器被用来查找指定字段有一个或多个值（存在）或没有任何值（丢失）。这和SQL语句的`IS_NULL`(丢失）和`NOT IS_NULL`(存在）相同：
+
+```json
 {
     "exists":   {
         "field":    "title"
     }
 }
-VIEW IN SENSE
+```
+
+
 These filters are frequently used to apply a condition only if a field is present, and to apply a different condition if it is missing.
 
 bool filteredit

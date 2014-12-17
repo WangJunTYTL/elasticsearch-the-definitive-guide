@@ -1,43 +1,51 @@
+查询和过滤器
+==========
 
-elasticsearch: the definitive guide » getting started » full-body search » queries and filters
-«  query dsl     most important queries and filters  »
-queries and filtersedit
+* [空搜索](empty-search.md)
+* [查询DSL](query-dsl.md)
+* [查询和过滤器](queries-and-filters.md)
+* [更重要的查询和过滤器](most-important-queries-and-filters.md)
+* [带过滤器的查询](combining-queries-with-filters.md)
+* [验证查询](validating-queries.md)
 
-empty search
-query dsl
-queries and filters
-most important queries and filters
-combining queries with filters
-validating queries
-Although we refer to the query DSL, in reality there are two DSLs: the query DSL and the filter DSL. Query clauses and filter clauses are similar in nature, but have slightly different purposes.
 
-A filter asks a yes|no question of every document and is used for fields that contain exact values:
+实际上有两种DSL：查询DSL和过滤器DSL。查询条件和过滤器条件在本质上是相似的，但有不同的用途。
 
-Is the created date in the range 2013 - 2014?
-Does the status field contain the term published?
-Is the lat_lon field within 10km of a specified point?
-A query is similar to a filter, but also asks the question: How well does this document match?
+过滤器会对每一个文档问一个yes|no的问题，且只针对有精确值的字段：
+
+* `create`日期是否在`2013`到`2014`年？
+* `status`字段是否包含术语`published`？
+* `lat_lon`字段是否在指定点的10km范围内？
+
+查询和过滤器很像，不过会问这个问题：这个文档有多匹配？
+
+一些使用查询查找文档的经典用法：
+
+* 最匹配`full text search`的文档。
+* 包含词`run`，有可能还匹配`runs`、`running`、`jog`或者`sprint`。
+* 包含词`quick`、`brown`和`fox`，这些词离得越近，文档的相关度越大。
+* 被标记了`lucen`、`search`或者`java`，打这几个标签的数量越多，文档的相关度越大。
 
 A typical use for a query is to find documents
 
-Best matching the words full text search
-Containing the word run, but maybe also matching runs, running, jog, or sprint
-Containing the words quick, brown, and fox--the closer together they are, the more relevant the document
-Tagged with lucene, search, or java--the more tags, the more relevant the document
-A query calculates how relevant each document is to the query, and assigns it a relevance _score, which is later used to sort matching documents by relevance. This concept of relevance is well suited to full-text search, where there is seldom a completely “correct” answer.
 
-performance differencesedit
+查询会计算每个文档和查询的相关度，将其分配为`_score`，之后使用它来对文档的相关性排序。全文搜索很少有完全“正确”的答案，因而很适合用相关性的概念来表达。
 
-The output from most filter clauses—a simple list of the documents that match the filter—is quick to calculate and easy to cache in memory, using only 1 bit per document. These cached filters can be reused efficiently for subsequent requests.
+性能差异
+---------
 
-Queries have to not only find matching documents, but also calculate how relevant each document is, which typically makes queries heavier than filters. Also, query results are not cachable.
+大多数过滤器条件的输出（匹配过滤器的文档列表），每个文档只占用1bit，因而很容易计算，而且易于在内存缓存。这些缓存的过滤器能被后续查询有效重用。
 
-Thanks to the inverted index, a simple query that matches just a few documents may perform as well or better than a cached filter that spans millions of documents. In general, however, a cached filter will outperform a query, and will do so consistently.
+查询则不仅要找出匹配的文档，还要计算出每个文档的相关度，通常比过滤器要更重。另外,查询结果也是不可缓存的。
 
-The goal of filters is to reduce the number of documents that have to be examined by the query.
+由于倒排索引的存在，一个简单的查询只匹配少量的文档，这和跨越数百万文档的缓存了的过滤器的表现相当或者更好。但总体而言，一个缓存的过滤器优于查询，而且会一直这样。
 
-when to use whichedit
+过滤器的目标就是减少通过查询检查的文档个数。
 
-As a general rule, use query clauses for full-text search or for any condition that should affect the relevance score, and use filter clauses for everything else.
+什么时候使用哪一个
+---------------
 
-«  query dsl     most important queries and filters  »
+作为一个通用法则，使用全文搜索或者任何影响相关度的条件时，使用查询；其他的则使用过滤器。
+
+
+[« DSL](query-dsl.md)      [更重要的查询和过滤器 »](most-important-queries-and-filters.md)
