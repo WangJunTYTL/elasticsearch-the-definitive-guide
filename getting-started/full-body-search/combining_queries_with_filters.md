@@ -1,14 +1,14 @@
+带过滤器的查询
+-------------
 
-elasticsearch: the definitive guide » getting started » full-body search » combining queries with filters
-«  most important queries and filters     validating queries  »
-combining queries with filtersedit
+* [空搜索](empty-search.md)
+* [查询DSL](query-dsl.md)
+* [查询和过滤器](queries-and-filters.md)
+* [更重要的查询和过滤器](most-important-queries-and-filters.md)
+* [带过滤器的查询](combining-queries-with-filters.md)
+* [验证查询](validating-queries.md)
 
-empty search
-query dsl
-queries and filters
-most important queries and filters
-combining queries with filters
-validating queries
+`query`可以用于查询上下文，`filter`能被用于过滤上下文。通过Elasticsearch的API，你可以看到参数中既包含`query`又包含`filter` 。
 Queries can be used in query context, and filters can be used in filter context. Throughout the Elasticsearch API, you will see parameters with query or filter in the name. These expect a single argument containing either a single query or filter clause respectively. In other words, they establish the outer context as query context or filter context.
 
 Compound query clauses can wrap other query clauses, and compound filter clauses can wrap other filter clauses. However, it is often useful to apply a filter to a query or, less frequently, to use a full-text query as a filter.

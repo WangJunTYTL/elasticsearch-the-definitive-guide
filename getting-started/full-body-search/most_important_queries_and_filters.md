@@ -12,10 +12,10 @@
 
 Elasticsearch有很多查询和过滤器，你经常使用的只是一小部分。我们将在《[深度搜索](../../search-in-depth/README.MD)》中详细讨论更多的细节，现在我们来快速了解一些更加重要的查询和过滤器。
 
-术语过滤
+`term`过滤器
 ---------
 
-术语过滤器被用来对精确值进行过滤，包括数值、日期、布尔值、或者`not_analyzed`的字符串：
+`term`过滤器被用来对精确值进行过滤，包括数值、日期、布尔值、或者`not_analyzed`的字符串：
 
 
 ```json
@@ -25,19 +25,19 @@ Elasticsearch有很多查询和过滤器，你经常使用的只是一小部分�
 { "term": { "tag":    "full_text"  }}
 ```
 
-多术语过滤器
+`terms`过滤器
 --------------
 
-多术语过滤器和术语过滤器相同，但是允许指定更多的值进行匹配。只要字段包含任何指定的值，都会被匹配上：
+`terms`过滤器和`term`过滤器相同，但是允许指定更多的值进行匹配。只要字段包含任何指定的值，都会被匹配上：
 
 ```json
 { "terms": { "tag": [ "search", "full_text", "nosql" ] }}
 ```
 
-范围过滤
+`range`过滤器
 -------
 
-范围过滤器允许你找到在指定范围内的数字或日期：
+`range`过滤器允许你找到在指定范围内的数字或日期：
 
 
 ```json
@@ -66,10 +66,10 @@ Elasticsearch有很多查询和过滤器，你经常使用的只是一小部分�
 > 小于等于
 
 
-存在和丢失过滤器
+`exists`和`missing`过滤器
 -------------
 
-存在和丢失过滤器被用来查找指定字段有一个或多个值（存在）或没有任何值（丢失）。这和SQL语句的`IS_NULL`(丢失）和`NOT IS_NULL`(存在）相同：
+`exists`和`missing`过滤器被用来查找指定字段有一个或多个值（存在）或没有任何值（丢失）。这和SQL语句的`IS_NULL`(丢失）和`NOT IS_NULL`(存在）相同：
 
 ```json
 {
@@ -79,21 +79,28 @@ Elasticsearch有很多查询和过滤器，你经常使用的只是一小部分�
 }
 ```
 
+这些过滤器经常被用来在一个字段存在时应用一个条件，不存在时应用另外的条件。
 
-These filters are frequently used to apply a condition only if a field is present, and to apply a different condition if it is missing.
+`bool`过滤器
+------------
 
-bool filteredit
+`bool`过滤器用来使用布尔逻辑综合多个过滤器条件。它接收下面三个参数：
 
-The bool filter is used to combine multiple filter clauses using Boolean logic. It accepts three parameters:
+* `must`
 
-must
-These clauses must match, like and.
-must_not
-These clauses must not match, like not.
-should
-At least one of these clauses must match, like or.
-Each of these parameters can accept a single filter clause or an array of filter clauses:
+> 这些条件必须都满足，和`and`类似。
 
+* must_not
+
+> 这些条件必须不满足，和`not`类似。
+
+* should
+
+> 至少有一个条件要满足，类似于`or`。
+
+每一个参数都能接受一个单一的过滤器或者过滤器数组：
+
+```json
 {
     "bool": {
         "must":     { "term": { "folder": "inbox" }},
@@ -104,58 +111,80 @@ Each of these parameters can accept a single filter clause or an array of filter
         ]
     }
 }
-VIEW IN SENSE
-match_all queryedit
+```
 
-The match_all query simply matches all documents. It is the default query that is used if no query has been specified:
+`match_all`查询
+---------------
 
+`match_all`查询所有的文档。它是默认的查询，没有指定任何的查询：
+
+```json
 { "match_all": {}}
-VIEW IN SENSE
-This query is frequently used in combination with a filter—for instance, to retrieve all emails in the inbox folder. All documents are considered to be equally relevant, so they all receive a neutral _score of 1.
+```
 
-match queryedit
+这个查询经常用来和一个过滤器想结合。例如，接收所有收件箱里边的邮件。所有的文档被认为是同等重要的，接收到的`_score`值都为1。
 
-The match query should be the standard query that you reach for whenever you want to query for a full-text or exact value in almost any field.
+`match`查询
+--------
 
-If you run a match query against a full-text field, it will analyze the query string by using the correct analyzer for that field before executing the search:
+`match`查询应该被认为是一种标准查询，你可以在任何时候对全文字段或者对几乎所有的精准值字段进行查询。
 
+如果你对全文字段进行`match`查询，在执行查询之前会使用正确的分析器对查询字符串进行分析。
+
+```json
 { "match": { "tweet": "About Search" }}
-VIEW IN SENSE
-If you use it on a field containing an exact value, such as a number, a date, a Boolean, or a not_analyzed string field, then it will search for that exact value:
+```
 
+如果你对一个精确值字段（比如一个日期、一个布尔值、或者一个`not_analyzed`的字符串字段）进行`match`查询，它就会完全按这个确切的值进行查询：
+
+```json
 { "match": { "age":    26           }}
 { "match": { "date":   "2014-09-01" }}
 { "match": { "public": true         }}
 { "match": { "tag":    "full_text"  }}
-VIEW IN SENSE
-Tip
-For exact-value searches, you probably want to use a filter instead of a query, as a filter will be cached.
+```
 
-Unlike the query-string search that we showed in Search Lite, the match query does not use a query syntax like +user_id:2 +tweet:search. It just looks for the words that are specified. This means that it is safe to expose to your users via a search field; you control what fields they can query, and it is not prone to throwing syntax errors.
+> 提示
+-----
+对于精确值查询，你可能想使用一个过滤器而不是查询，因为过滤器将会被缓存。
+语法。
+不像我们在《[搜索精简版](../search-lite.md)》查询字符串搜索，`match`查询并不使用类似于+user_id:2 +tweet:search这样的查询语法。它仅仅是查找指定的这些词。这意味着把搜索字段暴露给用户是安全的；你可以控制哪些字段能被查询，也不容易带来语法错误。
 
-multi_match queryedit
 
-The multi_match query allows to run the same match query on multiple fields:
+`multi_match`查询
+----------------
 
+`multi_match`查询允许对多个字段进行同样的匹配查询：
+
+```
 {
     "multi_match": {
         "query":    "full text search",
         "fields":   [ "title", "body" ]
     }
 }
-VIEW IN SENSE
-bool queryedit
+```
 
-The bool query, like the bool filter, is used to combine multiple query clauses. However, there are some differences. Remember that while filters give binary yes/no answers, queries calculate a relevance score instead. The bool query combines the _score from each must or should clause that matches. This query accepts the following parameters:
+`bool`查询
+----------
 
-must
-Clauses that must match for the document to be included.
-must_not
-Clauses that must not match for the document to be included.
-should
-If these clauses match, they increase the _score; otherwise, they have no effect. They are simply used to refine the relevance score for each document.
-The following query finds documents whose title field matches the query string how to make millions and that are not marked as spam. If any documents are starred or are from 2014 onward, they will rank higher than they would have otherwise. Documents that match both conditions will rank even higher:
+`bool`查询和`bool`过滤器类似，被用来综合多个查询条件。然而，也还是一些区别。过滤器给出yes/no的回答，而查询则会计算出相关度。`bool`查询将从每一个匹配的`must`或者`should`条件匹配综合得出出`_score`。这个查询接受如下的参数：
 
+* `must`
+
+> 条件必须和包含的文档相匹配。
+
+`must_not`
+
+* 条件必须和包含的文档不匹配。
+
+`should`
+> 如果条件匹配，它们会增加`_score`的分值；否则，它们没有任何影响。它们被用来对每个文档提炼相关性得分。
+
+
+下面的查询用来查找`title`字段匹配查询字符串`how to make millions`且没有被标记为垃圾的文档。任何被标星或者创建于2014年以后的文档，得分高于本来应得的。满足两个条件的得分更高。
+
+```json
 {
     "bool": {
         "must":     { "match": { "title": "how to make millions" }},
@@ -166,8 +195,10 @@ The following query finds documents whose title field matches the query string h
         ]
     }
 }
-VIEW IN SENSE
-Tip
-If there are no must clauses, at least one should clause has to match. However, if there is at least one must clause, no should clauses are required to match.
+```
 
-«  queries and filters     combining queries with filters  »
+> 提示
+----
+如果没有`must`条件，至少需要有一个`should`条件进行匹配。而如果有至少一个`must`条件，则不需要有`should`条件。
+
+[« 查询和过滤器](queries-and-filters.md)     [带过滤器的查询 »](combining-queries-with-filters.md)
