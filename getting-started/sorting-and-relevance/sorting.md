@@ -139,4 +139,4 @@ GET /_search?sort=date:desc&sort=_score&q=search
 
 ------------------
 
-[« 排序和相关性](sorting-and-relevance.md)     [字符串排序和多字段 »](string sorting-and-multifields.md)
+[« 排序和相关性](sorting-and-relevance.md)     [字符串排序和多字段 »](string-sorting-and-multifields.md)
