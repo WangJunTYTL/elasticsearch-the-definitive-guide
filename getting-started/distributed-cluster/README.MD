@@ -2,7 +2,7 @@
 分布式集群
 ==============
 
-* [一个空集群](an-empty-cluster.md)
+* [空集群](an-empty-cluster.md)
 * [集群健康](cluster-health.md)
 * [添加索引](add-an-index.md)
 * [故障转移](add-failover.md)
@@ -26,4 +26,4 @@ Elasticsearch的宗旨是高可用和高扩展。扩展可以通过购买配置�
 
 -------------------------------------------------------------------------
 
-[« 接下来](../you-know-for-search/next-steps.md)   [一个空集群 »](an-empty-cluster.md)
+[« 接下来](../you-know-for-search/next-steps.md)   [空集群 »](an-empty-cluster.md)

@@ -2,7 +2,7 @@
 故障转移
 ===========
 
-* [一个空集群](an-empty-cluster.md)
+* [空集群](an-empty-cluster.md)
 * [集群健康](cluster-health.md)
 * [添加索引](add-an-index.md)
 * [故障转移](add-failover.md)
