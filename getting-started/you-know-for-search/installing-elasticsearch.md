@@ -34,6 +34,8 @@ cd  elasticsearch-$VERSION
 
 > [1] 从[http://elasticsearch.org/download](http://elasticsearch.org/download)找到最新可用版本填充这个网址。
 
+----------------
+
 > 提示
 -----
 在生产环境使用Elasticsearch时，你可以用前面这个方法，或者使用[下载页](http://www.elasticsearch.org/downloads)的Debian或者RPM包。你可以使用官方提供的[Puppet模块](https://github.com/elasticsearch/puppet-elasticsearch)或者[Chef cookbook](https://github.com/elasticsearch/cookbook-elasticsearch)
