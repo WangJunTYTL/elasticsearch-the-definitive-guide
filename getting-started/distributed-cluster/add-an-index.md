@@ -1,5 +1,14 @@
-添加一个索引
+
+添加索引
 ============
+
+* [一个空集群](an-empty-cluster.md)
+* [集群健康](cluster-helth.md)
+* [添加索引](add-an-index.md)
+* [故障转移](add-failover.md)
+* [水平扩展](scale-horizontally.md)
+* [应对失败](coping-with-failure)
+
 
 要添加数据到Elasticsearch，我们需要添加一个索引关联数据。实际上，一个索引仅仅是一个命名空间，它指向一个或多个物理分片。
 
@@ -63,4 +72,7 @@ PUT /blogs
 
 
 ------------------------------------------
-[添加故障转移](add-failover.md)
+
+
+[« 集群健康](cluster-helth.md)   [添加故障转移 »](add-failover.md)
+

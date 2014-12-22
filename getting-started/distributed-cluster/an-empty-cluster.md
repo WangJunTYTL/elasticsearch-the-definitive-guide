@@ -1,5 +1,13 @@
+
 一个空集群
 ==============
+
+* [一个空集群](an-empty-cluster.md)
+* [集群健康](cluster-helth.md)
+* [添加索引](add-an-index.md)
+* [故障转移](add-failover.md)
+* [水平扩展](scale-horizontally.md)
+* [应对失败](coping-with-failure)
 
 如果启动一个单独节点，没有数据和索引，这时候集群就像图1“只有一个空节点的集群”
 
@@ -17,4 +25,5 @@
 
 ---------------------------------------------------
 
-[集群健康](cluster-health.md)
+
+[« 分布式集群](README.MD)   [集群健康 »](cluster-health.md)
