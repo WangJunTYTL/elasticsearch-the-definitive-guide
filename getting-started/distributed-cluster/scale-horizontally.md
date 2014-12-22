@@ -7,7 +7,7 @@
 * [添加索引](add-an-index.md)
 * [故障转移](add-failover.md)
 * [水平扩展](scale-horizontally.md)
-* [应对失败](coping-with-failure)
+* [应对失败](coping-with-failure.md)
 
 随着我们应用的需求增长，如何进行扩展呢？如果我们启动第3个节点，我们的集群将重组自己，看起来就像图4，“三节点集群——分片被重新分配平摊负载”。
 
@@ -52,4 +52,4 @@ PUT /blogs/_settings
 ---------------------------
 
 
-[« 故障转移](add-failover.md)    [应对失败 »](coping-with-failure)
+[« 故障转移](add-failover.md)    [应对失败 »](coping-with-failure.md)

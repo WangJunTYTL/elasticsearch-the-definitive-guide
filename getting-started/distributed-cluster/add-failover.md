@@ -7,7 +7,7 @@
 * [添加索引](add-an-index.md)
 * [故障转移](add-failover.md)
 * [水平扩展](scale-horizontally.md)
-* [应对失败](coping-with-failure)
+* [应对失败](coping-with-failure.md)
 
 
 运行一个节点意味着你有单点故障的可能性，幸运的是，我们仅仅需要增加另外一个节点就可以防止数据丢失。

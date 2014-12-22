@@ -7,7 +7,7 @@
 * [添加索引](add-an-index.md)
 * [故障转移](add-failover.md)
 * [水平扩展](scale-horizontally.md)
-* [应对失败](coping-with-failure)
+* [应对失败](coping-with-failure.md)
 
 如果启动一个单独节点，没有数据和索引，这时候集群就像图1“只有一个空节点的集群”
 

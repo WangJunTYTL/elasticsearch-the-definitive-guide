@@ -8,7 +8,7 @@
 * [添加索引](add-an-index.md)
 * [故障转移](add-failover.md)
 * [水平扩展](scale-horizontally.md)
-* [应对失败](coping-with-failure)
+* [应对失败](coping-with-failure.md)
 
 
 We’ve said that Elasticsearch can cope when nodes fail, so let’s go ahead and try it out. If we kill the first node, our cluster looks like Figure 6, “Cluster after killing one node”.
