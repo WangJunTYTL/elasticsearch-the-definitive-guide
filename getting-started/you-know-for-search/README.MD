@@ -1,11 +1,30 @@
-你知道的，为了搜索
-===================
 
-Elasticsearch是一个构建于全文搜索引擎库Apache Lucene™之上的开源搜索引擎。Lucene开源和拥有专利的，我们甚至可以说，它是当下最先进、高效、功能齐全的搜索引擎库。
+你知道的，为了搜索
+===============
+
+* [安装Elasticsearch](installing-elasticsearch.md)
+* [运行Elasticsearch](running-elasticsearch.md)
+* [和Elasticsearch交流](talking-to-elasticsearch.md)
+* [面向文档](document-oriented.md)
+* [发现你的足迹](finding-your-feet.md)
+* [索引员工文档](indexing-employee-documents.md)
+* [检索一个文档](retrieving-a-document.md)
+* [搜索精简版](search-lite.md)
+* [使用查询DSL搜索](search-with-query-dsl.md)
+* [复杂搜索](more-complicated-searches.md)
+* [全文搜索](full-text-search.md)
+* [短语搜索](phrase-search.md)
+* [高亮搜索](highlighting-our-searches.md)
+* [分析](analytics.md)
+* [教程结论](tutorial-conclusion.md)
+* [分布式特性](distributed-nature.md)
+* [接下来](next-steps.md)
+
+Elasticsearch是一个构建于全文搜索引擎库[Apache Lucene™](https://lucene.apache.org/core/)之上的开源搜索引擎。Lucene开源，且拥有专利，甚至可以说，它是当下最先进、高效、功能齐全的搜索引擎库。
 
 但是，Lucene仅仅是一个库，要领略它的魅力，你需要使用Java，将它集成到到你的程序。更坏的是，你可能需要对它的检索机制有深入的了解。总之，它是很复杂的。
 
-Elasticsearch使用java缩写，索引和检索完全基于Lucene，但其目标则是通过简单、通用、REST化的接口，隐藏Lucene的高深莫测，让全文搜索变得简(ren)单(xing)。
+Elasticsearch使用java语言编写，索引和检索完全基于Lucene，目标在于通过简单、通用、REST化的接口，隐藏Lucene的高深莫测，让全文搜索变得简单。
 
 但是，Elasticsearch不仅仅是Lucene，也不仅仅是全文搜索，它同时可以被描述成这样的：
 
@@ -34,3 +53,7 @@ Elasticsearch是灵活可配置的，随着对Elasticsearch的不断了解，你
   
 > Shay的妻子还在等着他的菜谱搜索引擎...
 
+
+-------------------
+
+[« 入门](../../getting-started/README.MD)   [安装Elasticsearch »](installing-elasticsearch.md)
