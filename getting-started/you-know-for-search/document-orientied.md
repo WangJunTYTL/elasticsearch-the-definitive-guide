@@ -6,7 +6,7 @@
 * [运行Elasticsearch](running-elasticsearch.md)
 * [和Elasticsearch交流](talking-to-elasticsearch.md)
 * [面向文档](document-oriented.md)
-* [发现你的足迹](finding-your-feet.md)
+* [找找感觉](finding-your-feet.md)
 * [索引员工文档](indexing-employee-documents.md)
 * [检索一个文档](retrieving-a-document.md)
 * [搜索精简版](search-lite.md)
@@ -56,5 +56,5 @@ Elasticsearch使用[JSON](http://en.wikipedia.org/wiki/Json)（全称Javascript 
 
 ---------------------
 
-[« 和Elasticsearch交流](talking-to-elasticsearch.md)      [发现你的足迹 »](finding-your-feet.md)
+[« 和Elasticsearch交流](talking-to-elasticsearch.md)      [找找感觉 »](finding-your-feet.md)
 
