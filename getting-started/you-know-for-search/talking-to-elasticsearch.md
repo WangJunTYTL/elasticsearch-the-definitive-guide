@@ -52,40 +52,32 @@ json格式的HTTP RESTful API
 
 > 备注
 -----
-Elasticsearch提供各种语言（Groovy、Javascript、.NET、PHP、Perl、Python、Ruby）的官方客户端，以及各种社区（提供客户端和集成），这些都可以在《[指南](http://www.elasticsearch.org/guide/》找到。
+Elasticsearch提供各种语言（Groovy、Javascript、.NET、PHP、Perl、Python、Ruby）的官方客户端，以及各种社区（提供客户端和集成），这些都可以在《[指南](http://www.elasticsearch.org/guide/)》找到。
 
-A request to Elasticsearch consists of the same parts as any HTTP request. For instance, to count the number of documents in the cluster, we could use this:
+Elasticsearch的请求就是包含HTTP请求同样的部分。比如，要计算集群中的文档综述，我们可以这样来使用它：
 
-                                    
+
+```shell
+       <1>   <2>                   <3>    <4>                        
 curl -XGET 'http://localhost:9200/_count?pretty' -d '
-{  
+{  <5>
     "query": {
         "match_all": {}
     }
 }
-'
+```
 
+> [1] 可用的HTTP方法：GET、POST、PUT、HEAD或者DELETE。
+[2] 集群中任意节点的协议、主机名、以及端口
+[3] 请求的路径（path）。
+[4] 可选的查询字符串参数（比如，`?pretty`将使返回的JSON字符串将以pretty（漂亮）的形式展示，更加便于阅读。
+[5] JSON编码格式的请求体（如果请求需要才使用）
 
-The appropriate HTTP method or verb: GET, POST, PUT, HEAD, or DELETE
+---------------------------
 
+Elasticsearch返回一个HTTP状态码（比如`200 OK`）以及JSON编码的响应体（HEAD请求方法除外）。上面的curl请求返回的JSON响应内容如下：
 
-
-The protocol, hostname, and port of any node in the cluster
-
-
-
-The path of the request
-
-
-
-Any optional query-string parameters (for example ?pretty will pretty-print the JSON response to make it easier to read)
-
-
-
-A JSON-encoded request body (if the request needs one)
-
-Elasticsearch returns an HTTP status code like 200 OK and (except for HEAD requests) a JSON-encoded response body. The preceding curl request would respond with a JSON body like the following:
-
+```json
 {
     "count" : 0,
     "_shards" : {
@@ -94,27 +86,36 @@ Elasticsearch returns an HTTP status code like 200 OK and (except for HEAD reque
         "failed" : 0
     }
 }
-We don’t see the HTTP headers in the response because we didn’t ask curl to display them. To see the headers, use the curl command with the -i switch:
+```
+上面的内容并没有包含HTTP响应头，因为并没有要求curl展示他们。要看到响应头，使用curl命令时刻加入`-i`参数：
 
+```
 curl -i -XGET 'localhost:9200/'
-For the rest of the book, we will show these curl examples using a shorthand format that leaves out all the bits that are the same in every request, like the hostname and port, and the curl command itself. Instead of showing a full request like
+```
+这本书剩下的部分，我们在展示curl例子时，将使用一种简单的格式：去掉完全相同的部分，比如主机名和端口，以及curl命令本身。比如一个完整的命令：
 
+```shell
 curl -XGET 'localhost:9200/_count?pretty' -d '
 {
     "query": {
         "match_all": {}
     }
 }'
-we will show it in this shorthand format:
+```
+我们将以下面这种精简的格式呈现：
 
+```shell
 GET /_count
 {
     "query": {
         "match_all": {}
     }
 }
-VIEW IN SENSE
-In fact, this is the same format that is used by the Sense console that we installed with Marvel. If in the online version of this book, you can open and run this code example in Sense by clicking the View in Sense link above.
+```
 
-«  running elasticsearch     document oriented  »
+实际上，在Sense终端（和Marvel一起安装的）上我们使用的就是这种格式。如果使用本书的在线版本，你可以点击“View in Sense"链接在Sense中运行这些示例代码。
+
+--------------
+
+[« 运行Elasticsearch](running-elasticsearch.md)     [面向文档 »](document-oriented.md) 
 
