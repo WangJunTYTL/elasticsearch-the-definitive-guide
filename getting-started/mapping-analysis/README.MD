@@ -2,7 +2,7 @@
 ===========
 
 * [精确值和全文](exact-values-versus-full-text.md)
-* [倒排索引](inverted-index.md)
+* [反向索引](inverted-index.md)
 * [分析和分析器](analysis-and-analyzers.md)
 * [映射](mapping.md)
 * [复杂核心类型](complex-core-field-types.md)

@@ -1,26 +1,32 @@
-full-text searchedit
 
-installing elasticsearch
-running elasticsearch
-talking to elasticsearch
-document oriented
-finding your feet
-indexing employee documents
-retrieving a document
-search lite
-search with query dsl
-more-complicated searches
-full-text search
-phrase search
-highlighting our searches
-analytics
-tutorial conclusion
-distributed nature
-next steps
-The searches so far have been simple: single names, filtered by age. Let’s try a more advanced, full-text search—a task that traditional databases would really struggle with.
+全文搜索
+==============
 
-We are going to search for all employees who enjoy rock climbing:
+* [安装Elasticsearch](installing-elasticsearch.md)
+* [运行Elasticsearch](running-elasticsearch.md)
+* [和Elasticsearch交流](talking-to-elasticsearch.md)
+* [面向文档](document-oriented.md)
+* [找找感觉](finding-your-feet.md)
+* [索引文档](indexing-employee-documents.md)
+* [检索文档](retrieving-a-document.md)
+* [简单搜索](search-lite.md)
+* [使用DSL搜索](search-with-query-dsl.md)
+* [复杂点的搜索](more-complicated-searches.md)
+* [全文搜索](full-text-search.md)
+* [短语搜索](phrase-search.md)
+* [高亮搜索结果](highlighting-our-searches.md)
+* [分析](analytics.md)
+* [教程总结](tutorial-conclusion.md)
+* [分布式特性](distributed-nature.md)
+* [接下来](next-steps.md)
 
+
+到目前为止的搜索都还很简单：单一名称、通过年龄过滤。我们来尝试更高级一些的全文搜索，这经常是困扰传统数据库的一个问题。
+
+我们将搜索所有喜欢攀岩(`rock climbing`)的员工。
+
+
+```shell
 GET /megacorp/employee/_search
 {
     "query" : {
@@ -29,9 +35,11 @@ GET /megacorp/employee/_search
         }
     }
 }
-VIEW IN SENSE
-You can see that we use the same match query as before to search the about field for “rock climbing.” We get back two matching documents:
+```
 
+你可以看到我们使用和之前一样的`match`查询来搜索`about`字段包含"rock climbing"的文档。我们得到两个匹配的文档：
+
+```
 {
    ...
    "hits": {
@@ -40,7 +48,7 @@ You can see that we use the same match query as before to search the about field
       "hits": [
          {
             ...
-            "_score":         0.16273327, 
+            "_score":         0.16273327,   <1>
             "_source": {
                "first_name":  "John",
                "last_name":   "Smith",
@@ -51,7 +59,7 @@ You can see that we use the same match query as before to search the about field
          },
          {
             ...
-            "_score":         0.016878016, 
+            "_score":         0.016878016,  <2>
             "_source": {
                "first_name":  "Jane",
                "last_name":   "Smith",
@@ -63,15 +71,22 @@ You can see that we use the same match query as before to search the about field
       ]
    }
 }
+```
  
+> [1] [2] 相关性得分
 
-The relevance scores
+-------
 
-By default, Elasticsearch sorts matching results by their relevance score, that is, by how well each document matches the query. The first and highest-scoring result is obvious: John Smith’s about field clearly says “rock climbing” in it.
 
-But why did Jane Smith come back as a result? The reason her document was returned is because the word “rock” was mentioned in her about field. Because only “rock” was mentioned, and not “climbing,” her _score is lower than John’s.
+默认情况下，Elasticsearch按照相关性得分对匹配结果进行排序，也就是说，通过每个文档和搜索有多匹配进行排序。第一个得分高很明显：`John Smith`的`about`字段明显包含了`rock climbing`。
 
-This is a good example of how Elasticsearch can search within full-text fields and return the most relevant results first. This concept of relevance is important to Elasticsearch, and is a concept that is completely foreign to traditional relational databases, in which a record either matches or it doesn’t.
 
-«  more-complicated searches     phrase search  »
+但是，为什么Jane Smith也被返回来了呢？这是因为在他的`about`字段中提到了`rock`。因为只有一个“rock"被提到，没有包含"climbing"，她的`_score`值也低于John的。
+
+
+这是一个很好的例子，展示了Elasticsearch如何对全文字段进行搜索，并优先返回最相关的结果。相关性是Elasticsearch中很重要的概念，而传统关系型数据库只有匹配或者不匹配的概念，相关性完全和它们无缘。
+
+-----------------------
+
+[« 复杂点的搜索](more-complicated-searches.md)      [短语搜索 »](phrase-search.md)
 

@@ -1,25 +1,26 @@
 
-elasticsearch: the definitive guide » getting started » you know, for search… » distributed nature
-«  tutorial conclusion     next steps  »
-distributed natureedit
+分布式特性
+=========
 
-installing elasticsearch
-running elasticsearch
-talking to elasticsearch
-document oriented
-finding your feet
-indexing employee documents
-retrieving a document
-search lite
-search with query dsl
-more-complicated searches
-full-text search
-phrase search
-highlighting our searches
-analytics
-tutorial conclusion
-distributed nature
-next steps
+* [安装Elasticsearch](installing-elasticsearch.md)
+* [运行Elasticsearch](running-elasticsearch.md)
+* [和Elasticsearch交流](talking-to-elasticsearch.md)
+* [面向文档](document-oriented.md)
+* [找找感觉](finding-your-feet.md)
+* [索引文档](indexing-employee-documents.md)
+* [检索文档](retrieving-a-document.md)
+* [简单搜索](search-lite.md)
+* [使用DSL搜索](search-with-query-dsl.md)
+* [复杂点的搜索](more-complicated-searches.md)
+* [全文搜索](full-text-search.md)
+* [短语搜索](phrase-search.md)
+* [高亮搜索结果](highlighting-our-searches.md)
+* [分析](analytics.md)
+* [教程总结](tutorial-conclusion.md)
+* [分布式特性](distributed-nature.md)
+* [接下来](next-steps.md)
+
+在这一章的开头，我们说过Elasticsearch可以扩展到上百（甚至上千）太服务器，处理PB级别的数据。
 At the beginning of this chapter, we said that Elasticsearch can scale out to hundreds (or even thousands) of servers and handle petabytes of data. While our tutorial gave examples of how to use Elasticsearch, it didn’t touch on the mechanics at all. Elasticsearch is distributed by nature, and it is designed to hide the complexity that comes with being distributed.
 
 The distributed aspect of Elasticsearch is largely transparent. Nothing in the tutorial required you to know about distributed systems, sharding, cluster discovery, or dozens of other distributed concepts. It happily ran the tutorial on a single node living inside your laptop, but if you were to run the tutorial on a cluster containing 100 nodes, everything would work in exactly the same way.

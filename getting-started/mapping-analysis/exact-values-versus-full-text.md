@@ -2,7 +2,7 @@
 =============================
 
 * [精确值和全文](exact-values-versus-full-text.md)
-* [倒排索引](inverted-index.md)
+* [反向索引](inverted-index.md)
 * [分析和分析器](analysis-and-analyzers.md)
 * [映射](mapping.md)
 * [复杂核心类型](complex-core-field-types.md)
@@ -39,6 +39,6 @@ WHERE name    = "John Smith"
 * `johnny walker`要匹配上`Johnnie Walker`，`johnnie depp`应该匹配上`Johnny Depp`。
 * `fox news hunting`应该返回在福克斯新闻的花边新闻，而`fox hunting news`则回关于猎狐的新闻故事。
 
-为了便于这些全文查询字段，Elasticsearch先分析文本，然后使用分析后的结果构建倒排索引。在接下来的两节里我们将讨论倒排索引及其分析流程。
+为了便于这些全文查询字段，Elasticsearch先分析文本，然后使用分析后的结果构建反向索引。在接下来的两节里我们将讨论反向索引及其分析流程。
 
-[倒排索引  »](inverted-index.md)
+[反向索引  »](inverted-index.md)

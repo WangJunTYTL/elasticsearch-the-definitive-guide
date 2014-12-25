@@ -1,26 +1,31 @@
-highlighting our searchesedit
 
-installing elasticsearch
-running elasticsearch
-talking to elasticsearch
-document oriented
-finding your feet
-indexing employee documents
-retrieving a document
-search lite
-search with query dsl
-more-complicated searches
-full-text search
-phrase search
-highlighting our searches
-analytics
-tutorial conclusion
-distributed nature
-next steps
-Many applications like to highlight snippets of text from each search result so the user can see why the document matched the query. Retrieving highlighted fragments is easy in Elasticsearch.
+高亮搜索结果
+========
 
-Let’s rerun our previous query, but add a new highlight parameter:
+* [安装Elasticsearch](installing-elasticsearch.md)
+* [运行Elasticsearch](running-elasticsearch.md)
+* [和Elasticsearch交流](talking-to-elasticsearch.md)
+* [面向文档](document-oriented.md)
+* [找找感觉](finding-your-feet.md)
+* [索引文档](indexing-employee-documents.md)
+* [检索文档](retrieving-a-document.md)
+* [简单搜索](search-lite.md)
+* [使用DSL搜索](search-with-query-dsl.md)
+* [复杂点的搜索](more-complicated-searches.md)
+* [全文搜索](full-text-search.md)
+* [短语搜索](phrase-search.md)
+* [高亮搜索结果](highlighting-our-searches.md)
+* [分析](analytics.md)
+* [教程总结](tutorial-conclusion.md)
+* [分布式特性](distributed-nature.md)
+* [接下来](next-steps.md)
 
+
+很多程序对结果进行高亮显示，这样用户可以知道为什么这个文档被匹配上。在Elasticsearch要实现高亮显示结果是非常简单的。
+
+让我们重新运行前面的查询，但是增加一个`highlight`的参数：
+
+```shell
 GET /megacorp/employee/_search
 {
     "query" : {
@@ -34,9 +39,12 @@ GET /megacorp/employee/_search
         }
     }
 }
-VIEW IN SENSE
-When we run this query, the same hit is returned as before, but now we get a new section in the response called highlight. This contains a snippet of text from the about field with the matching words wrapped in <em></em> HTML tags:
+```
 
+
+当我们运行这个查询，`hit`字段还是会和之前一样返回来，但是我们从返回结果中找到一个新的字段，叫做`highlight`。它把`about`字段中匹配上的单词使用HTML代码`<em></em>`标识出来了：
+
+```
 {
    ...
    "hits": {
@@ -50,7 +58,7 @@ When we run this query, the same hit is returned as before, but now we get a new
                "first_name":  "John",
                "last_name":   "Smith",
                "age":         25,
-               "about":       "I love to go rock climbing",
+               "about":       "I love to go rock climbing", <1>
                "interests": [ "sports", "music" ]
             },
             "highlight": {
@@ -62,11 +70,15 @@ When we run this query, the same hit is returned as before, but now we get a new
       ]
    }
 }
+```
 
+> [1] 高亮片段的原文
 
-The highlighted fragment from the original text
+-------------------
 
-You can read more about the highlighting of search snippets in the highlighting reference documentation.
+你可以在《[高亮参考文档](../)》一节中详细了解关于高亮的内容。
 
-«  phrase search     analytics  »
+-----------------------
+
+[« 短语搜索](phrase-search.md)     [分析 »](analytics.md)
 

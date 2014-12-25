@@ -1,26 +1,31 @@
-analyticsedit
 
-installing elasticsearch
-running elasticsearch
-talking to elasticsearch
-document oriented
-finding your feet
-indexing employee documents
-retrieving a document
-search lite
-search with query dsl
-more-complicated searches
-full-text search
-phrase search
-highlighting our searches
-analytics
-tutorial conclusion
-distributed nature
-next steps
-Finally, we come to our last business requirement: allow managers to run analytics over the employee directory. Elasticsearch has functionality called aggregations, which allow you to generate sophisticated analytics over your data. It is similar to GROUP BY in SQL, but much more powerful.
+分析
+========
 
-For example, let’s find the most popular interests enjoyed by our employees:
+* [安装Elasticsearch](installing-elasticsearch.md)
+* [运行Elasticsearch](running-elasticsearch.md)
+* [和Elasticsearch交流](talking-to-elasticsearch.md)
+* [面向文档](document-oriented.md)
+* [找找感觉](finding-your-feet.md)
+* [索引文档](indexing-employee-documents.md)
+* [检索文档](retrieving-a-document.md)
+* [简单搜索](search-lite.md)
+* [使用DSL搜索](search-with-query-dsl.md)
+* [复杂点的搜索](more-complicated-searches.md)
+* [全文搜索](full-text-search.md)
+* [短语搜索](phrase-search.md)
+* [高亮搜索结果](highlighting-our-searches.md)
+* [分析](analytics.md)
+* [教程总结](tutorial-conclusion.md)
+* [分布式特性](distributed-nature.md)
+* [接下来](next-steps.md)
 
+
+最后，我们进入到最后一些业务需求：允许管理员对员工目录进行分析。Elasticsearch有聚合的功能，允许你对数据进行精细地分析。这类似于SQL语句里的`GROUP BY`，但是要更加强大。
+
+例如，我们查找我们的员工最感兴趣的事情：
+
+```shell
 GET /megacorp/employee/_search
 {
   "aggs": {
@@ -29,9 +34,11 @@ GET /megacorp/employee/_search
     }
   }
 }
-VIEW IN SENSE
-Ignore the syntax for now and just look at the results:
+```
 
+现在先忽略语法，只看结果：
+
+```
 {
    ...
    "hits": { ... },
@@ -54,8 +61,11 @@ Ignore the syntax for now and just look at the results:
       }
    }
 }
-We can see that two employees are interested in music, one in forestry, and one in sports. These aggregations are not precalculated; they are generated on the fly from the documents that match the current query. If we want to know the popular interests of people called Smith, we can just add the appropriate query into the mix:
+```
 
+我们可以看到有两个员工对`music`感兴趣，一个喜欢`forestry`，另外一个喜欢`sports`。这个聚合不是预先计算好的，它们是在查找匹配当前查询的文档时产生的。如果我们想知道叫`Smith`的人的兴趣所在，我们可以把对应的`query`加入进来：
+
+```shell
 GET /megacorp/employee/_search
 {
   "query": {
@@ -71,9 +81,11 @@ GET /megacorp/employee/_search
     }
   }
 }
-VIEW IN SENSE
-The all_interests aggregation has changed to include only documents matching our query:
+```
 
+这个`all_interests`聚合已经发生变化了，只包含了匹配查询的文档：
+
+```
   ...
   "all_interests": {
      "buckets": [
@@ -87,8 +99,11 @@ The all_interests aggregation has changed to include only documents matching our
         }
      ]
   }
-Aggregations allow hierarchical rollups too. For example, let’s find the average age of employees who share a particular interest:
+```
 
+聚合也允许分级汇总。比如，我们要查找有相同兴趣的人的平均年龄：
+
+```
 GET /megacorp/employee/_search
 {
     "aggs" : {
@@ -102,9 +117,11 @@ GET /megacorp/employee/_search
         }
     }
 }
-VIEW IN SENSE
-The aggregations that we get back are a bit more complicated, but still fairly easy to understand:
+```
 
+这个聚合返回的结果有一些复杂，不过还是很容易理解：
+
+```
   ...
   "all_interests": {
      "buckets": [
@@ -131,8 +148,12 @@ The aggregations that we get back are a bit more complicated, but still fairly e
         }
      ]
   }
-The output is basically an enriched version of the first aggregation we ran. We still have a list of interests and their counts, but now each interest has an additional avg_age, which shows the average age for all employees having that interest.
+```
 
-Even if you don’t understand the syntax yet, you can easily see how complex aggregations and groupings can be accomplished using this feature. The sky is the limit as to what kind of data you can extract!
+输出的内容和我们的第一个聚合基本一致。我们仍然又一个兴趣列表及其数量，但是每个兴趣有一个额外的`avg_age`字段，显示了有这个共同兴趣的员工的平均年龄。
 
-«  highlighting our searches     tutorial conclusion  »
+即使你不懂得上述语法，你也很容易了解到通过这个功能可以实现复杂的聚合和分组。没有限制，什么样的数据都可以提取！
+
+-------------
+
+[« 高亮搜索结果](highlighting-our-searches.md)      [教程总结 »](tutorial-conclusion.md)

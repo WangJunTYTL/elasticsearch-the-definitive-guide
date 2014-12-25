@@ -1,29 +1,30 @@
 
-elasticsearch: the definitive guide » getting started » you know, for search… » search with query dsl
-«  search lite     more-complicated searches  »
-search with query dsledit
+使用DSL搜索
+================
 
-installing elasticsearch
-running elasticsearch
-talking to elasticsearch
-document oriented
-finding your feet
-indexing employee documents
-retrieving a document
-search lite
-search with query dsl
-more-complicated searches
-full-text search
-phrase search
-highlighting our searches
-analytics
-tutorial conclusion
-distributed nature
-next steps
-Query-string search is handy for ad hoc searches from the command line, but it has its limitations (see Search Lite). Elasticsearch provides a rich, flexible, query language called the query DSL, which allows us to build much more complicated, robust queries.
+* [安装Elasticsearch](installing-elasticsearch.md)
+* [运行Elasticsearch](running-elasticsearch.md)
+* [和Elasticsearch交流](talking-to-elasticsearch.md)
+* [面向文档](document-oriented.md)
+* [找找感觉](finding-your-feet.md)
+* [索引文档](indexing-employee-documents.md)
+* [检索文档](retrieving-a-document.md)
+* [简单搜索](search-lite.md)
+* [使用DSL搜索](search-with-query-dsl.md)
+* [复杂点的搜索](more-complicated-searches.md)
+* [全文搜索](full-text-search.md)
+* [短语搜索](phrase-search.md)
+* [高亮搜索结果](highlighting-our-searches.md)
+* [分析](analytics.md)
+* [教程总结](tutorial-conclusion.md)
+* [分布式特性](distributed-nature.md)
+* [接下来](next-steps.md)
 
-The domain-specific language (DSL) is specified using a JSON request body. We can represent the previous search for all Smiths like so:
+查询字符串供命令行临时使用，但是有它本身的一些限制（参见《[搜索精简版](../search/search-lite.md)》一节）。Elasticsearch提供一个丰富、灵活的查询语言，叫做查询DSL，允许我们构建更加复杂、健壮的查询。
 
+DSL(domain-specific language)规定使用JSON请求体。我们重新将前面查找所有`Smith`的查询表述成下面的格式：
+
+```
 GET /megacorp/employee/_search
 {
     "query" : {
@@ -32,7 +33,10 @@ GET /megacorp/employee/_search
         }
     }
 }
-VIEW IN SENSE
-This will return the same results as the previous query. You can see that a number of things have changed. For one, we are no longer using query-string parameters, but instead a request body. This request body is built with JSON, and uses a match query (one of several types of queries, which we will learn about later).
+```
 
-«  search lite     more-complicated searches  »
+这将会返回和之前的查询同样的结果。你可以看到一些事情已经改变了。一方面，我们不在使用查询字符串参数，而是使用请求体。这个请求体是通过JSON构建，并且使用了`match`查询（查询方法之一，我们会在后后面的章节中学习）。
+
+--------------
+
+[« 搜索精简版](search-lite.md)      [复杂搜索 »](more-complicated-searches.md)

@@ -1,21 +1,21 @@
 
-倒排索引
+反向索引
 =======
 
 * [精确值和全文](exact-values-versus-full-text.md)
-* [倒排索引](inverted-index.md)
+* [反向索引](inverted-index.md)
 * [分析和分析器](analysis-and-analyzers.md)
 * [映射](mapping.md)
 * [复杂核心类型](complex-core-field-types.md)
 
-Elasticsearch使用倒排索引这种结构来提供快速全文搜索。一个倒排索引包含出现在任何文档的唯一词列表，对每一个词，也包含所有它出现的文档列表，
+Elasticsearch使用反向索引这种结构来提供快速全文搜索。一个反向索引包含出现在任何文档的唯一词列表，对每一个词，也包含所有它出现的文档列表，
 
 假设我们有两个文档，分别有一个`content`字段，内容如下：
 
 1. The quick brown fox jumped over the lazy dog
 2. Quick brown foxes leap over lazy dogs in summer
 
-为了创建倒排索引，我们先要将`content`字段进行分词（我们称之为词，或者口令），创建一个包含所有唯一词的有序列表。并列举出现过他们的文档。最后得出近似的结果：
+为了创建反向索引，我们先要将`content`字段进行分词（我们称之为词，或者口令），创建一个包含所有唯一词的有序列表。并列举出现过他们的文档。最后得出近似的结果：
 
 Term    | Doc_1 | Doc_2
 --------|:-----:|:----:
@@ -47,7 +47,7 @@ quick   |   X   |
 
 两个文档都有匹配，但是第1个文档比第2个文档更加匹配。如果我们提供一个只是计算词匹配次数的单纯算法，那么我们可以说第一个文档比第2个文档更加匹配，更加有关。
 
-不过现在这个倒排索引还有一些小问题：
+不过现在这个反向索引还有一些小问题：
 
 * `Quick`和`quick`会被分成两个词，但是用户会认为它们是同一个词。
 * `fox`和`foxes`非常相似，`dog`和`dogs`也是一样；它们的词根相同。
