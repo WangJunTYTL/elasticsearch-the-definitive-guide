@@ -10,24 +10,24 @@
 * [水平扩展](scale-horizontally.md)
 * [应对失败](coping-with-failure.md)
 
+我们已经说过当有节点损失时Elasticsearch可以自动复制，让我们开始尝试。如果我们杀掉第一个节点，我们的集群看起来像图6：“杀掉一个节点后的集群”。
 
-We’ve said that Elasticsearch can cope when nodes fail, so let’s go ahead and try it out. If we kill the first node, our cluster looks like Figure 6, “Cluster after killing one node”.
+图6. 杀掉一个节点后的集群
+![杀掉一个节点后的集群](elas_0206.png.png)
 
-Figure 6. Cluster after killing one node
 
-The cluster after killing one node
+我们杀掉的节点是主节点。一个集群要功能运转正常，必须有一个主节点，所以第意见事情就是这些节点选举出一个新的主节点：Node 2。
 
-The node we killed was the master node. A cluster must have a master node in order to function correctly, so the first thing that happened was that the nodes elected a new master: Node 2.
+杀掉Nod 1时主分片1和2丢失了，失去主分片后索引是不能正常工作的。如果我们在这个时候检查集群的健康，我们将看到`red`状态：不是所有的主分片都正常！
 
-Primary shards 1 and 2 were lost when we killed Node 1, and our index cannot function properly if it is missing primary shards. If we had checked the cluster health at this point, we would have seen status red: not all primary shards are active!
+幸运的是，失去主分片后在其他节点还有它们的完整拷贝，因此新主节点要做的第一件事就是将Node 2和Node 3节点上这两个复制分片变成主分片，将集群健康状态变成`yellow`。这个推动过程是瞬间的，就像按下一个开关。
 
-Fortunately, a complete copy of the two lost primary shards exists on other nodes, so the first thing that the new master node did was to promote the replicas of these shards on Node 2 and Node 3 to be primaries, putting us back into cluster health yellow. This promotion process was instantaneous, like the flick of a switch.
+那为什么集群的健康是`yellow`而不是`green`状态呢？我们已经有三个主分片，但我们规定了每个主分片要对应2个复制分片，而现在只分配了一个。这阻止我们达到`green`的标准，不过我们不用太担心这个：即使我们把Node 2也杀掉，我们的程序可以继续运行，不会丢失数据，因为Node 3包含了所有分片的拷贝。
 
-So why is our cluster health yellow and not green? We have all three primary shards, but we specified that we wanted two replicas of each primary, and currently only one replica is assigned. This prevents us from reaching green, but we’re not too worried here: were we to kill Node 2 as well, our application could still keep running without data loss, because Node 3 contains a copy of every shard.
+如果我们重新启动Node 1，集群将能重新分配失去的复制分片，最后的状态类似于图5：“复制分片数量增长到2”。如果节点1仍然有旧分片的数据，将会尝试重新利用它们，与此同时将主分片里边已经改变的数据拷贝过去。
 
-If we restart Node 1, the cluster would be able to allocate the missing replica shards, resulting in a state similar to the one described in Figure 5, “Increasing the number_of_replicas to 2”. If Node 1 still has copies of the old shards, it will try to reuse them, copying over from the primary shard only the files that have changed in the meantime.
+到现在为止，我们对分片允许Elasticsearch进行水平扩展，以及如果确保数据安全有了合理的想法。后面我们将具体研究分片的生命周期。
 
-By now, you should have a reasonable idea of how shards allow Elasticsearch to scale horizontally and to ensure that your data is safe. Later we will examine the life cycle of a shard in more detail.
 
 --------
 
