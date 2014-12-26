@@ -1,5 +1,5 @@
 
-搜索精简版
+简单搜索
 =========
 
 * [安装Elasticsearch](installing-elasticsearch.md)
@@ -14,9 +14,9 @@
 * [复杂点的搜索](more-complicated-searches.md)
 * [全文搜索](full-text-search.md)
 * [短语搜索](phrase-search.md)
-* [高亮搜索](highlighting-our-searches.md)
+* [高亮搜索结果](highlighting-our-searches.md)
 * [分析](analytics.md)
-* [教程结论](tutorial-conclusion.md)
+* [教程总结](tutorial-conclusion.md)
 * [分布式特性](distributed-nature.md)
 * [接下来](next-steps.md)
 
