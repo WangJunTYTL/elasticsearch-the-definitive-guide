@@ -27,5 +27,5 @@
 本书的其余部分将帮助你从新手到专家。每一章将解释要点，也将介绍专家级的提示。如果你刚入门，这些提示不一定和你直接相关。Elasticsearch拥有很明智的默认行为，一般不会受到任何干扰，做正确的事情。当你想通过减少耗费的时间提升性能时，你可以重新审视这些章节。
 
 
-[« 分布式特性](distributed-nature.md)     [分布式集群 »](../../distributed-cluster/README.MD)
+[« 分布式特性](distributed-nature.md)     [分布式集群 »](../distributed-cluster/README.MD)
 
