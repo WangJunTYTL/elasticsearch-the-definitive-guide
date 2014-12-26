@@ -32,7 +32,7 @@ Elasticsearch力图隐藏分布式系统的复杂性。这里有一些自动运�
 * 可以从急群众的任何节点路由定位到你需要的数据。
 * 集群增长时无缝集成新节点；节点丢失后重新部署分片。
 
-这些章节将告诉你集群如何扩展和实现故障转移（《[分布式集群](../../distributed-cluster/README.MD)》），处理文档存储（《[分布式文档存储](../../distributed-document-store/README.MD)》，执行分布式搜索（《[分布式搜索](../../distributed-search/README.MD)》，还有分片是什么以及如何工作（《[分片](../../life-inside-shard/README.MD)》）。
+这些章节将告诉你集群如何扩展和实现故障转移（《[分布式集群](../distributed-cluster/README.MD)》），处理文档存储（《[分布式文档存储](../distributed-document-store/README.MD)》，执行分布式搜索（《[分布式搜索](../distributed-search/README.MD)》，还有分片是什么以及如何工作（《[分片](../life-inside-shard/README.MD)》）。
 
 阅读这些章节不是必须的，不理解这些内部机制也可以使用Elasticsearch，但是它们将是你的Elasticsearch的只是更加完整，提升你的洞察力。你也可以忽略它们，在你需要一些复杂理解时再来查看它们。
 
